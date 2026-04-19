@@ -1780,7 +1780,7 @@ function loadQuizOptions() {
             <div class="quiz-option-buttons">
                 <button class="btn btn-primary btn-lg" onclick="startQuiz()">Full Quiz</button>
                 <button class="btn btn-info btn-lg" onclick="startTopicQuiz()">Topic Quiz</button>
-                <button class="btn btn-success btn-lg" onclick="startLectureQuiz()">Lecture Quiz</button>
+                <button class="btn btn-success btn-lg" onclick="showLectureSelection()">Lecture Quiz</button>
                 <button class="btn btn-warning btn-lg" onclick="startAdaptiveQuiz()">Adaptive Quiz</button>
             </div>
         </div>
@@ -1841,6 +1841,7 @@ function startQuiz() {
     
     currentQuestionIndex = 0;
     quizScore = 0;
+    userAnswers = []; // Reset user answers for review mode
     quizStartTime = new Date();
     
     showQuizQuestion();
@@ -1887,6 +1888,10 @@ function getQuestionsByTopic(topic) {
 }
 
 // Show quiz question - English only for exam preparation
+// Store user answers for review mode
+let userAnswers = [];
+let questionReviewData = [];
+
 function showQuizQuestion() {
     const question = currentQuiz[currentQuestionIndex];
     const quizContainer = document.getElementById('quiz-container');
@@ -1909,22 +1914,71 @@ function showQuizQuestion() {
         explanationText = question.explanation;
     }
     
+    // Calculate progress
+    const progressPercent = Math.round(((currentQuestionIndex + 1) / currentQuiz.length) * 100);
+    
+    // Calculate time spent
+    let timeDisplay = '';
+    if (quizStartTime) {
+        const timeSpent = Math.floor((new Date() - quizStartTime) / 1000);
+        const minutes = Math.floor(timeSpent / 60);
+        const seconds = timeSpent % 60;
+        timeDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Generate question navigation dots
+    let navDots = '';
+    const maxDots = Math.min(currentQuiz.length, 20); // Show max 20 dots
+    const startDot = Math.max(0, Math.min(currentQuestionIndex - 10, currentQuiz.length - maxDots));
+    for (let i = startDot; i < Math.min(startDot + maxDots, currentQuiz.length); i++) {
+        let dotClass = 'nav-dot';
+        if (i === currentQuestionIndex) {
+            dotClass += ' active';
+        } else if (i < currentQuestionIndex) {
+            dotClass += ' answered';
+        }
+        // Show compact dots
+        if (currentQuiz.length > 20 && i === startDot && startDot > 0) {
+            navDots += '<span class="nav-dots-ellipsis">...</span>';
+        }
+        navDots += `<span class="${dotClass}" onclick="jumpToQuestion(${i})" title="Question ${i + 1}">${i + 1}</span>`;
+        if (currentQuiz.length > 20 && i === startDot + maxDots - 1 && i < currentQuiz.length - 1) {
+            navDots += '<span class="nav-dots-ellipsis">...</span>';
+        }
+    }
+    
     quizContainer.innerHTML = `
         <div class="quiz-question">
+            <!-- Progress Bar -->
+            <div class="quiz-progress-container">
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" style="width: ${progressPercent}%"></div>
+                </div>
+                <div class="quiz-progress-text">${currentQuestionIndex + 1} / ${currentQuiz.length} (${progressPercent}%)</div>
+            </div>
+            
+            <!-- Question Navigation Dots -->
+            <div class="question-nav-dots">${navDots}</div>
+            
             <div class="quiz-header mb-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5><span data-translate="quiz.question">Question</span> ${currentQuestionIndex + 1} <span data-translate="quiz.of">of</span> ${currentQuiz.length}</h5>
+                    <h5>Question ${currentQuestionIndex + 1} of ${currentQuiz.length}</h5>
                     <div class="quiz-info">
                         <span class="badge bg-info me-2">Score: ${quizScore}/${currentQuiz.length}</span>
-                        <span class="badge bg-warning" id="quizTimer">00:00</span>
+                        <span class="badge bg-secondary" id="quizTimer">${timeDisplay}</span>
                     </div>
                 </div>
             </div>
-            <h4>${questionText}</h4>
+            <div class="question-text-container">
+                <h4 class="question-text">${questionText}</h4>
+                <div class="keyboard-hint">Press 1-5 to select answer</div>
+            </div>
             <div class="quiz-options">
                 ${optionsText.map((option, index) => `
-                    <button class="quiz-option" onclick="selectAnswer(${index})">
-                        ${String.fromCharCode(65 + index)}. ${option}
+                    <button class="quiz-option" data-index="${index}" onclick="selectAnswer(${index})">
+                        <span class="option-letter">${String.fromCharCode(65 + index)}</span>
+                        <span class="option-text">${option}</span>
+                        <span class="key-hint">${index + 1}</span>
                     </button>
                 `).join('')}
             </div>
@@ -1936,6 +1990,9 @@ function showQuizQuestion() {
     if (typeof applyTranslations === 'function') {
         applyTranslations();
     }
+    
+    // Setup keyboard navigation
+    setupKeyboardNavigation();
 }
 
 // Enhanced translation function for quiz content (Chinese to English)
@@ -2051,6 +2108,9 @@ function selectAnswer(answerIndex) {
     const question = currentQuiz[currentQuestionIndex];
     const isCorrect = answerIndex === question.correct;
     
+    // Store user's answer for review mode
+    userAnswers[currentQuestionIndex] = answerIndex;
+    
     if (isCorrect) {
         quizScore++;
     }
@@ -2060,19 +2120,11 @@ function selectAnswer(answerIndex) {
     
     // Show feedback
     const feedbackDiv = document.getElementById('quiz-feedback');
-    let explanationText;
     
-    // Always use English explanations
-    if (window.englishQuizQuestions && englishQuizQuestions[currentQuestionIndex]) {
-        const englishQuestion = englishQuizQuestions[currentQuestionIndex];
-        explanationText = englishQuestion.explanation;
-    }
-    else if (question.explanationEn) {
-        explanationText = question.explanationEn;
-    }
-    else {
-        explanationText = question.explanation;
-    }
+    // Use explanation directly from current question object
+    // Note: Do NOT use currentQuestionIndex to look up in englishQuizQuestions
+    // because currentQuiz may be shuffled/filtered, so indexes won't match
+    const explanationText = question.explanationEn || question.explanation || '';
     
     feedbackDiv.innerHTML = `
         <div class="alert ${isCorrect ? 'alert-success' : 'alert-danger'}">
@@ -2152,36 +2204,238 @@ function finishQuiz() {
     }
     
     // Save score
-    userProgress.quizScores.push({
+    // Store detailed results for review
+    const quizResults = {
         score: quizScore,
         total: currentQuiz.length,
         percentage: percentage,
         time: `${minutes}:${seconds.toString().padStart(2, '0')}`,
-        date: new Date().toLocaleString(currentLanguage === 'en' ? 'en-US' : 'zh-TW')
-    });
+        date: new Date().toLocaleString(currentLanguage === 'en' ? 'en-US' : 'zh-TW'),
+        questions: currentQuiz.map((q, idx) => ({
+            question: q.question,
+            userAnswer: userAnswers[idx] !== undefined ? userAnswers[idx] : -1,
+            correctAnswer: q.correct,
+            isCorrect: userAnswers[idx] === q.correct,
+            explanation: q.explanation,
+            options: q.options
+        }))
+    };
+    
+    userProgress.quizScores.push(quizResults);
     saveUserProgress();
+    
+    // Remove keyboard listener
+    document.removeEventListener('keydown', handleQuizKeydown);
     
     const quizContainer = document.getElementById('quiz-container');
     quizContainer.innerHTML = `
-        <div class="text-center">
-            <h3>Quiz Completed!</h3>
-            <div class="score-display ${scoreClass}">
-                ${quizScore} / ${currentQuiz.length}
+        <div class="quiz-results-container">
+            <h3 class="text-center mb-4">Quiz Completed!</h3>
+            
+            <!-- Score Circle -->
+            <div class="score-circle-container">
+                <div class="score-circle ${scoreClass}">
+                    <span class="score-value">${percentage}%</span>
+                    <span class="score-label">${quizScore}/${currentQuiz.length}</span>
+                </div>
             </div>
-            <h4>Percentage: ${percentage}%</h4>
-            <p class="lead">${gradeText}</p>
-            <p>Time spent: ${minutes} minutes ${seconds} seconds</p>
-            <button class="btn btn-primary" onclick="showSection('progress')">View Statistics</button>
-            <button class="btn btn-secondary" onclick="loadQuizOptions()">Try Again</button>
+            
+            <div class="text-center mb-4">
+                <h4 class="grade-text ${scoreClass}">${gradeText}</h4>
+                <p class="time-spent"><i class="fas fa-clock"></i> Time spent: ${minutes}m ${seconds}s</p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="quiz-stats-grid">
+                <div class="stat-box correct-stat">
+                    <div class="stat-number">${quizScore}</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-box incorrect-stat">
+                    <div class="stat-number">${currentQuiz.length - quizScore}</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-box time-stat">
+                    <div class="stat-number">${Math.round(currentQuiz.length / (timeSpent / 60)) || 0}</div>
+                    <div class="stat-label">Q/min</div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="quiz-result-actions mt-4">
+                <button class="btn btn-info" onclick="showQuizReview(${userProgress.quizScores.length - 1})">
+                    <i class="fas fa-search"></i> Review Answers
+                </button>
+                <button class="btn btn-primary" onclick="showSection('progress')">
+                    <i class="fas fa-chart-line"></i> View Statistics
+                </button>
+                <button class="btn btn-secondary" onclick="loadQuizOptions()">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+            </div>
         </div>
     `;
 }
 
-// Start quiz timer (disabled - timer element removed)
+// Show detailed quiz review
+function showQuizReview(scoreIndex) {
+    const results = userProgress.quizScores[scoreIndex];
+    if (!results) return;
+    
+    const quizContainer = document.getElementById('quiz-container');
+    
+    // Generate review items
+    const reviewItems = results.questions.map((q, idx) => {
+        const isCorrect = q.isCorrect;
+        const userLetter = q.userAnswer >= 0 ? String.fromCharCode(65 + q.userAnswer) : '-';
+        const correctLetter = String.fromCharCode(65 + q.correctAnswer);
+        
+        return `
+            <div class="review-item ${isCorrect ? 'review-correct' : 'review-incorrect'}">
+                <div class="review-header">
+                    <span class="review-number">Q${idx + 1}</span>
+                    <span class="review-status">${isCorrect ? '✓ Correct' : '✗ Incorrect'}</span>
+                </div>
+                <div class="review-question">${q.question}</div>
+                <div class="review-answers">
+                    <div class="review-user-answer">
+                        <span class="label">Your answer:</span>
+                        <span class="value ${isCorrect ? 'correct' : 'wrong'}">${userLetter}. ${q.userAnswer >= 0 ? q.options[q.userAnswer] : 'Not answered'}</span>
+                    </div>
+                    ${!isCorrect ? `
+                        <div class="review-correct-answer">
+                            <span class="label">Correct answer:</span>
+                            <span class="value correct">${correctLetter}. ${q.options[q.correctAnswer]}</span>
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="review-explanation">${q.explanation}</div>
+            </div>
+        `;
+    }).join('');
+    
+    quizContainer.innerHTML = `
+        <div class="quiz-review-container">
+            <div class="review-header-bar">
+                <h4><i class="fas fa-search"></i> Quiz Review</h4>
+                <span class="review-score">${results.score}/${results.total} (${results.percentage}%)</span>
+            </div>
+            <div class="review-filters">
+                <button class="btn btn-sm btn-outline-primary active" onclick="filterReview('all')">All</button>
+                <button class="btn btn-sm btn-outline-success" onclick="filterReview('correct')">Correct</button>
+                <button class="btn btn-sm btn-outline-danger" onclick="filterReview('incorrect')">Incorrect</button>
+            </div>
+            <div class="review-list">
+                ${reviewItems}
+            </div>
+            <div class="review-actions mt-3">
+                <button class="btn btn-secondary" onclick="loadQuizOptions()">
+                    <i class="fas fa-arrow-left"></i> Back to Quiz Menu
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Filter review items
+function filterReview(filter) {
+    const items = document.querySelectorAll('.review-item');
+    const buttons = document.querySelectorAll('.review-filters button');
+    
+    // Update button states
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Show/hide items
+    items.forEach(item => {
+        if (filter === 'all') {
+            item.style.display = 'block';
+        } else if (filter === 'correct' && item.classList.contains('review-correct')) {
+            item.style.display = 'block';
+        } else if (filter === 'incorrect' && item.classList.contains('review-incorrect')) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// Start quiz timer
+let quizTimerInterval = null;
+
 function startQuizTimer() {
-    // Timer functionality has been disabled as requested
-    // The timer element has been removed from the UI
-    console.log('Timer functionality disabled');
+    // Clear any existing timer
+    if (quizTimerInterval) {
+        clearInterval(quizTimerInterval);
+    }
+    
+    // Update timer display every second
+    quizTimerInterval = setInterval(() => {
+        if (quizStartTime) {
+            const timeSpent = Math.floor((new Date() - quizStartTime) / 1000);
+            const minutes = Math.floor(timeSpent / 60);
+            const seconds = timeSpent % 60;
+            const timeDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            const timerElement = document.getElementById('quizTimer');
+            if (timerElement) {
+                timerElement.textContent = timeDisplay;
+            }
+        }
+    }, 1000);
+}
+
+// Setup keyboard navigation for quiz
+function setupKeyboardNavigation() {
+    // Remove existing listener if any
+    document.removeEventListener('keydown', handleQuizKeydown);
+    
+    // Add keyboard listener
+    document.addEventListener('keydown', handleQuizKeydown);
+}
+
+function handleQuizKeydown(e) {
+    // Only respond if quiz is active
+    const quizContainer = document.getElementById('quiz-container');
+    if (!quizContainer || !quizContainer.querySelector('.quiz-question')) {
+        return;
+    }
+    
+    // Don't intercept if user is typing in an input
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return;
+    }
+    
+    // Number keys 1-5 to select answers
+    if (e.key >= '1' && e.key <= '5') {
+        const answerIndex = parseInt(e.key) - 1;
+        const option = document.querySelector(`.quiz-option[data-index="${answerIndex}"]`);
+        if (option && !option.disabled) {
+            selectAnswer(answerIndex);
+        }
+        return;
+    }
+    
+    // Arrow keys for navigation (if feedback is showing)
+    const feedbackDiv = document.getElementById('quiz-feedback');
+    if (feedbackDiv && feedbackDiv.innerHTML.trim() !== '') {
+        if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            continueToNextQuestion();
+            return;
+        }
+    }
+}
+
+// Jump to specific question
+function jumpToQuestion(index) {
+    // Only allow jumping to previous questions or current question
+    if (index > currentQuestionIndex) {
+        return;
+    }
+    
+    currentQuestionIndex = index;
+    showQuizQuestion();
 }
 
 // Start topic quiz
@@ -2197,6 +2451,7 @@ function startTopicQuiz(topic) {
     
     currentQuestionIndex = 0;
     quizScore = 0;
+    userAnswers = []; // Reset user answers for review mode
     quizStartTime = new Date();
     
     showQuizQuestion();
@@ -2290,6 +2545,67 @@ function showTopicSelection() {
     `;
 }
 
+// Show lecture selection interface
+function showLectureSelection() {
+    const quizContainer = document.getElementById('quiz-container');
+    if (!quizContainer) return;
+    
+    // Define lecture info with question counts from quiz database
+    const lectureInfo = [
+        { id: 2, title: "Lecture 2: Marketing Strategy", questions: 15, topics: ["Strategy", "Planning", "Mission", "Vision"] },
+        { id: 3, title: "Lecture 3: Environmental Scanning", questions: 15, topics: ["SWOT", "PEST", "Research", "Analysis"] },
+        { id: 4, title: "Lecture 4: Consumer Behavior", questions: 15, topics: ["Consumer", "Decision", "Attitude", "Learning"] },
+        { id: 5, title: "Lecture 5: Segmentation, Targeting, Positioning", questions: 15, topics: ["STP", "Segmentation", "Targeting"] },
+        { id: 6, title: "Lecture 6: Product Strategy", questions: 15, topics: ["Product", "Brand", "Lifecycle", "Development"] },
+        { id: 7, title: "Lecture 7: Pricing Strategy", questions: 15, topics: ["Pricing", "Cost", "Elasticity", "Revenue"] },
+        { id: 8, title: "Lecture 8: Place/Distribution", questions: 15, topics: ["Distribution", "Channel", "Logistics", "Retail"] },
+        { id: 9, title: "Lecture 9: Promotion", questions: 15, topics: ["Promotion", "Advertising", "IMC", "Communication"] }
+    ];
+    
+    // Generate lecture cards
+    const lectureCards = lectureInfo.map(lecture => {
+        const topicTags = lecture.topics.map(t => `<span class="lecture-topic-tag">${t}</span>`).join('');
+        return `
+            <div class="col-md-6 mb-3">
+                <div class="card lecture-quiz-card h-100">
+                    <div class="card-body">
+                        <div class="lecture-header">
+                            <span class="lecture-number">L${lecture.id}</span>
+                            <h5 class="card-title">${lecture.title}</h5>
+                        </div>
+                        <div class="lecture-meta">
+                            <span class="badge bg-info">${lecture.questions} Questions</span>
+                        </div>
+                        <div class="lecture-topics">
+                            ${topicTags}
+                        </div>
+                        <button class="btn btn-success w-100 mt-3" onclick="startLectureQuiz(${lecture.id})">
+                            <i class="fas fa-play"></i> Start Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    quizContainer.innerHTML = `
+        <div class="lecture-selection-container">
+            <div class="lecture-selection-header">
+                <h3><i class="fas fa-graduation-cap"></i> Select Lecture Quiz</h3>
+                <p class="text-muted">Choose a specific lecture to practice. Each quiz contains 15 questions from that lecture.</p>
+            </div>
+            <div class="row">
+                ${lectureCards}
+            </div>
+            <div class="lecture-selection-footer">
+                <button class="btn btn-secondary" onclick="loadQuizOptions()">
+                    <i class="fas fa-arrow-left"></i> Back to Quiz Options
+                </button>
+            </div>
+        </div>
+    `;
+}
+
 // Generate topic-specific quiz
 function generateTopicQuiz(topic) {
     const topicQuestions = getQuestionsByTopic(topic);
@@ -2373,6 +2689,7 @@ function startLectureQuiz(lectureId) {
         
         currentQuestionIndex = 0;
         quizScore = 0;
+        userAnswers = []; // Reset user answers for review mode
         quizStartTime = new Date();
         
         showQuizQuestion();
@@ -2388,6 +2705,7 @@ function startAdaptiveQuiz() {
     
     currentQuestionIndex = 0;
     quizScore = 0;
+    userAnswers = []; // Reset user answers for review mode
     quizStartTime = new Date();
     
     showQuizQuestion();
@@ -3317,6 +3635,10 @@ window.startAdaptiveQuiz = startAdaptiveQuiz;
 window.selectAnswer = selectAnswer;
 window.markLectureComplete = markLectureComplete;
 window.continueToNextQuestion = continueToNextQuestion;
+window.showQuizReview = showQuizReview;
+window.filterReview = filterReview;
+window.jumpToQuestion = jumpToQuestion;
+window.showLectureSelection = showLectureSelection;
 
 // Translation button functions
 function enableTextSelection() {
