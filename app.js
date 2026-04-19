@@ -2463,84 +2463,50 @@ function showTopicSelection() {
     const quizContainer = document.getElementById('quiz-container');
     if (!quizContainer) return;
     
-    quizContainer.innerHTML = `
-        <div class="text-center">
-            <h3>Choose a Topic to Practice</h3>
-            <div class="row mt-4">
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Marketing Strategy</h5>
-                            <p class="card-text">Strategic planning and long-term marketing approaches</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('strategy')">Start Practice</button>
-                        </div>
+    // Define topics with week numbers
+    const topics = [
+        { name: "Marketing Strategy", week: 2, desc: "Strategic planning and long-term marketing approaches", key: "strategy" },
+        { name: "Environmental Scanning", week: 3, desc: "Market research and environmental analysis", key: "environment" },
+        { name: "Consumer Behavior", week: 4, desc: "Understanding consumer decision-making process", key: "consumer" },
+        { name: "Market Segmentation (STP)", week: 5, desc: "STP strategy and target market selection", key: "market" },
+        { name: "Product Strategy", week: 6, desc: "Product development and brand management", key: "product" },
+        { name: "Pricing Strategy", week: 7, desc: "Pricing methods and revenue management", key: "price" },
+        { name: "Place/Distribution", week: 8, desc: "Distribution channels and logistics", key: "place" },
+        { name: "Promotion Strategy", week: 9, desc: "Advertising and promotional mix", key: "promotion" }
+    ];
+    
+    // Generate topic cards
+    const topicCards = topics.map(topic => `
+        <div class="col-md-6 mb-3">
+            <div class="card topic-quiz-card h-100">
+                <div class="card-body">
+                    <div class="topic-header">
+                        <span class="topic-week-badge">Week ${topic.week}</span>
+                        <h5 class="card-title">${topic.name}</h5>
                     </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Environmental Scanning</h5>
-                            <p class="card-text">Market research and environmental analysis</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('environment')">Start Practice</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Consumer Behavior</h5>
-                            <p class="card-text">Understanding consumer decision-making process</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('consumer')">Start Practice</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Market Segmentation</h5>
-                            <p class="card-text">STP strategy and target market selection</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('market')">Start Practice</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Strategy</h5>
-                            <p class="card-text">Product development and brand management</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('product')">Start Practice</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Pricing Strategy</h5>
-                            <p class="card-text">Pricing methods and revenue management</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('price')">Start Practice</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Place Strategy</h5>
-                            <p class="card-text">Distribution channels and logistics</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('place')">Start Practice</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Promotion Strategy</h5>
-                            <p class="card-text">Advertising and promotional mix</p>
-                            <button class="btn btn-primary" onclick="startTopicQuiz('promotion')">Start Practice</button>
-                        </div>
-                    </div>
+                    <p class="card-text">${topic.desc}</p>
+                    <button class="btn btn-primary w-100" onclick="startTopicQuiz('${topic.key}')">
+                        <i class="fas fa-play"></i> Start Practice
+                    </button>
                 </div>
             </div>
-            <button class="btn btn-secondary mt-3" onclick="loadQuizOptions()">Back to Quiz Options</button>
+        </div>
+    `).join('');
+    
+    quizContainer.innerHTML = `
+        <div class="topic-selection-container">
+            <div class="topic-selection-header">
+                <h3><i class="fas fa-book-open"></i> Choose a Topic to Practice</h3>
+                <p class="text-muted">Select a topic to focus your practice on specific areas</p>
+            </div>
+            <div class="row mt-4">
+                ${topicCards}
+            </div>
+            <div class="topic-selection-footer">
+                <button class="btn btn-secondary" onclick="loadQuizOptions()">
+                    <i class="fas fa-arrow-left"></i> Back to Quiz Options
+                </button>
+            </div>
         </div>
     `;
 }
