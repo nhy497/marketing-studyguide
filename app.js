@@ -193,27 +193,283 @@ const lectureData = [
         descriptionEn: "Environmental scanning and marketing research methods",
         descriptionZh: "Environmental Scanning and Marketing Research - Methods and Analysis",
         content: `
-            <h4>Environmental Scanning and Marketing Research</h4>
-            <p><strong>Environmental Scanning Definition:</strong> The process of continuously monitoring external environment changes to identify opportunities and threats.</p>
+            <div class="lecture-overview">
+                <div class="concept-box">
+                    <h4>Environmental Scanning and Marketing Research</h4>
+                    <div class="definition-card">
+                        <h5>What is Environmental Scanning?</h5>
+                        <div class="definition-content">
+                            <p><strong>Environmental Scanning Definition:</strong> The process of continuously monitoring the external environment to identify opportunities and threats that may influence business operations and strategy.</p>
+                            <div class="key-points">
+                                <span class="badge bg-primary">External Focus</span>
+                                <span class="badge bg-success">Continuous Process</span>
+                                <span class="badge bg-warning">Strategic Tool</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <h5>Importance of Environmental Scanning:</h5>
-            <ul>
-                <li><strong>Predict Changes:</strong> Early identification of market trends and changes</li>
-                <li><strong>Identify Opportunities:</strong> Discover new market opportunities and growth points</li>
-                <li><strong>Risk Management:</strong> Anticipate potential threats and develop response strategies</li>
-                <li><strong>Competitive Advantage:</strong> React to market changes faster than competitors</li>
-            </ul>
+            <div class="strategy-elements">
+                <h5>Importance of Environmental Scanning</h5>
+                <div class="elements-grid">
+                    <div class="element-card">
+                        <div class="element-icon">1</div>
+                        <h6>Predict Changes</h6>
+                        <p>Early identification of market trends and shifts before competitors</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="element-icon">2</div>
+                        <h6>Identify Opportunities</h6>
+                        <p>Discover new market opportunities and growth potential areas</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="element-icon">3</div>
+                        <h6>Risk Management</h6>
+                        <p>Anticipate potential threats and develop proactive response strategies</p>
+                    </div>
+                    <div class="element-card">
+                        <div class="element-icon">4</div>
+                        <h6>Competitive Advantage</h6>
+                        <p>React faster than competitors to environmental changes</p>
+                    </div>
+                </div>
+            </div>
             
-            <h5>External Environment Analysis Framework:</h5>
+            <div class="concepts-analysis">
+                <h5>External Environment Analysis Frameworks</h5>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>1. PEST Analysis</h6>
+                        <span class="concept-badge">Macro-Environment</span>
+                    </div>
+                    <p>PEST analysis examines macro-environmental factors affecting all businesses in an industry.</p>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Political/Legal</h7>
+                            <p>Government policies, regulations, political stability, trade restrictions, tax policies, labor laws</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Economic</h7>
+                            <p>Economic growth, inflation rates, interest rates, exchange rates, unemployment, consumer confidence</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Social/Cultural</h7>
+                            <p>Demographics, lifestyle trends, education levels, cultural values, population growth, income distribution</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Technological</h7>
+                            <p>R&D activity, automation, innovation, technological change, internet infrastructure</p>
+                        </div>
+                    </div>
+                    <div class="example-box">
+                        <p><strong>Example:</strong> A tech company analyzes how 5G rollout (Technological) and data privacy regulations (Political) will affect their product development timeline.</p>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>2. SWOT Analysis</h6>
+                        <span class="concept-badge">Strategic Planning</span>
+                    </div>
+                    <p>SWOT integrates internal and external analysis to develop comprehensive strategies.</p>
+                    <div class="swot-grid">
+                        <div class="swot-item swot-strengths">
+                            <h7>Strengths (Internal)</h7>
+                            <ul>
+                                <li>Core competencies and unique resources</li>
+                                <li>Strong brand reputation</li>
+                                <li>Efficient operations and processes</li>
+                                <li>Skilled workforce and expertise</li>
+                                <li>Financial resources and stability</li>
+                            </ul>
+                        </div>
+                        <div class="swot-item swot-weaknesses">
+                            <h7>Weaknesses (Internal)</h7>
+                            <ul>
+                                <li>Limited resources or capabilities</li>
+                                <li>Weak brand recognition</li>
+                                <li>Operational inefficiencies</li>
+                                <li>Skill gaps in workforce</li>
+                                <li>Financial constraints</li>
+                            </ul>
+                        </div>
+                        <div class="swot-item swot-opportunities">
+                            <h7>Opportunities (External)</h7>
+                            <ul>
+                                <li>Emerging market trends</li>
+                                <li>Technological advancements</li>
+                                <li>Changes in consumer preferences</li>
+                                <li>New market segments</li>
+                                <li>Regulatory changes favoring business</li>
+                            </ul>
+                        </div>
+                        <div class="swot-item swot-threats">
+                            <h7>Threats (External)</h7>
+                            <ul>
+                                <li>New competitor entry</li>
+                                <li>Substitute products or services</li>
+                                <li>Economic downturns</li>
+                                <li>Changing regulations</li>
+                                <li>Supply chain disruptions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="example-box">
+                        <p><strong>Strategy Development:</strong> Use Strengths to capitalize on Opportunities, while minimizing Weaknesses and defending against Threats.</p>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>3. Competitive Analysis</h6>
+                        <span class="concept-badge">Industry Analysis</span>
+                    </div>
+                    <p>Understanding competitive dynamics helps identify strategic positioning opportunities.</p>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Competitor Identification</h7>
+                            <p>Direct competitors (same market), indirect competitors (substitutes), potential entrants</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Competitor Strategies</h7>
+                            <p>Pricing strategies, marketing approaches, distribution channels, target segments</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Competitive Positioning</h7>
+                            <p>Market share, brand positioning, product differentiation, customer loyalty</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Porter's Five Forces</h7>
+                            <p>Rivalry, new entrants, substitutes, buyer power, supplier power</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <h6>1. PEST Analysis Framework</h6>
-            <p>PEST analysis is used to assess macro-environmental factors:</p>
-            <ul>
-                <li><strong>Political Factors:</strong> Government policies, regulatory changes, political stability</li>
-                <li><strong>Economic Factors:</strong> Economic growth rate, inflation, interest rates, consumer purchasing power</li>
-                <li><strong>Social Factors:</strong> Population structure, cultural values, lifestyle changes, education level</li>
-                <li><strong>Technological Factors:</strong> Technological innovation, R&D trends, automation</li>
-            </ul>
+            <div class="concepts-analysis">
+                <h5>Marketing Research Methods</h5>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Research Types</h6>
+                        <span class="concept-badge">Data Collection</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Primary Research</h7>
+                            <p>Original data collection: surveys, interviews, focus groups, observations, experiments</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Secondary Research</h7>
+                            <p>Existing data analysis: industry reports, government statistics, academic studies, company records</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Qualitative Research</h7>
+                            <p>Exploratory insights: focus groups, in-depth interviews, ethnographic studies</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Quantitative Research</h7>
+                            <p>Statistical analysis: surveys, questionnaires, structured observations, experiments</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Research Process</h6>
+                        <span class="concept-badge">Systematic Approach</span>
+                    </div>
+                    <div class="planning-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h7>Define Problem</h7>
+                                <p>Clarify research objectives and information needs</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h7>Develop Research Plan</h7>
+                                <p>Determine data sources, collection methods, and budget</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h7>Collect Data</h7>
+                                <p>Implement research design and gather information</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h7>Analyze Data</h7>
+                                <p>Process, tabulate, and interpret research findings</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h7>Present Findings</h7>
+                                <p>Report results and recommend strategic actions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="practical-application">
+                <h5>Practical Application: Environmental Scanning in Action</h5>
+                <div class="case-study-box">
+                    <div class="case-header">
+                        <h6>Case Study: Entering a New Market</h6>
+                        <span class="case-badge">Strategic Analysis</span>
+                    </div>
+                    <div class="case-challenge">
+                        <h7>Business Challenge</h7>
+                        <p>A retail company wants to expand into an emerging Asian market. What environmental factors should they analyze?</p>
+                    </div>
+                    <div class="case-solution">
+                        <h7>Analysis Framework</h7>
+                        <div class="strategy-list">
+                            <div class="strategy-item">
+                                <div class="strategy-icon">P</div>
+                                <p><strong>Political:</strong> Trade policies, foreign investment regulations, political stability</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">E</div>
+                                <p><strong>Economic:</strong> GDP growth, disposable income, retail infrastructure, payment systems</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">S</div>
+                                <p><strong>Social:</strong> Shopping habits, cultural preferences, urbanization trends</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">T</div>
+                                <p><strong>Technological:</strong> E-commerce adoption, mobile payment penetration, logistics tech</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-strategies">
+                        <h7>Strategic Implications</h7>
+                        <p>Comprehensive environmental scanning reveals both opportunities (growing middle class, mobile-first consumers) and threats (complex regulations, established local competitors), enabling informed market entry strategy.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-takeaways">
+                <h5>Key Takeaways</h5>
+                <ul>
+                    <li><strong>Continuous Process:</strong> Environmental scanning is ongoing, not one-time</li>
+                    <li><strong>Multiple Frameworks:</strong> PEST, SWOT, and competitive analysis complement each other</li>
+                    <li><strong>Data Quality:</strong> Research validity depends on appropriate methods and reliable sources</li>
+                    <li><strong>Strategic Integration:</strong> Environmental insights must inform strategic decisions</li>
+                    <li><strong>Proactive Approach:</strong> Early identification of changes enables competitive advantage</li>
+                </ul>
+            </div>
         `
     },
     {
@@ -226,24 +482,231 @@ const lectureData = [
         descriptionEn: "Consumer behavior analysis and decision process",
         descriptionZh: "Consumer Behavior - Analysis and Decision Process",
         content: `
-            <h4>Consumer Behavior</h4>
-            <p><strong>Consumer Behavior Definition:</strong> The actions a person takes in purchasing and using products and services.</p>
+            <div class="lecture-overview">
+                <div class="concept-box">
+                    <h4>Understanding Consumer Behavior</h4>
+                    <div class="definition-card">
+                        <h5>What is Consumer Behavior?</h5>
+                        <div class="definition-content">
+                            <p><strong>Consumer Behavior Definition:</strong> The study of how individuals, groups, and organizations select, buy, use, and dispose of goods, services, ideas, or experiences to satisfy their needs and wants.</p>
+                            <div class="key-points">
+                                <span class="badge bg-primary">Decision Process</span>
+                                <span class="badge bg-success">Psychological Factors</span>
+                                <span class="badge bg-warning">Social Influences</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <h5>Learning Objectives:</h5>
-            <ul>
-                <li>Understand basic concepts of consumer behavior</li>
-                <li>Learn factors influencing consumer decision making</li>
-                <li>Analyze how psychological factors affect consumer choices</li>
-            </ul>
+            <div class="concepts-analysis">
+                <h5>Factors Influencing Consumer Behavior</h5>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>1. Cultural Factors</h6>
+                        <span class="concept-badge">Broadest Influence</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Culture</h7>
+                            <p>Basic values, perceptions, preferences, and behaviors learned from family and society</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Subculture</h7>
+                            <p>Nationalities, religions, racial groups, geographic regions with shared values</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Social Class</h7>
+                            <p>Relatively permanent divisions in society based on income, education, occupation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>2. Social Factors</h6>
+                        <span class="concept-badge">Group Influence</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Reference Groups</h7>
+                            <p>Direct (family, friends, colleagues) and indirect (celebrities, aspirational) groups</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Family</h7>
+                            <p>Most influential primary group affecting purchase decisions across lifecycle stages</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Roles and Status</h7>
+                            <p>Position within groups influences product choices (status symbols)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>3. Personal Factors</h6>
+                        <span class="concept-badge">Individual Characteristics</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Age and Life Stage</h7>
+                            <p>Consumption patterns change with age and family lifecycle</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Occupation</h7>
+                            <p>Professional identity influences product preferences and spending</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Economic Situation</h7>
+                            <p>Income, savings, borrowing power affect spending capacity</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Lifestyle</h7>
+                            <p>Activities, interests, opinions (AIO) shape consumption patterns</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>4. Psychological Factors</h6>
+                        <span class="concept-badge">Internal Processes</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Motivation</h7>
+                            <p>Maslow's hierarchy: physiological, safety, social, esteem, self-actualization needs</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Perception</h7>
+                            <p>Selective attention, selective distortion, selective retention</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Learning</h7>
+                            <p>Changes in behavior from experience through drive, cue, response, reinforcement</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Beliefs and Attitudes</h7>
+                            <p>Descriptive thoughts and evaluative feelings about objects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <h5>Consumer Decision Process:</h5>
-            <ol>
-                <li><strong>Problem Recognition:</strong> Consumer identifies a need or problem</li>
-                <li><strong>Information Search:</strong> Consumer seeks information about solutions</li>
-                <li><strong>Alternative Evaluation:</strong> Consumer compares different options</li>
-                <li><strong>Purchase Decision:</strong> Consumer makes the purchase choice</li>
-                <li><strong>Post-purchase Behavior:</strong> Consumer evaluates satisfaction</li>
-            </ol>
+            <div class="concepts-analysis">
+                <h5>Consumer Decision Process</h5>
+                <div class="planning-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h7>Problem Recognition</h7>
+                            <p>Consumer identifies a need or problem. Triggered by internal stimuli (hunger) or external stimuli (advertising)</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h7>Information Search</h7>
+                            <p>Personal sources (memory, experience), commercial sources (ads, websites), public sources (reviews), experiential sources (handling product)</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h7>Alternative Evaluation</h7>
+                            <p>Consumers evaluate based on product attributes, brand beliefs, and decision heuristics</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h7>Purchase Decision</h7>
+                            <p>Form purchase intention, choose retailer, timing, and quantity. Interference from unexpected factors or others' attitudes</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h7>Post-purchase Behavior</h7>
+                            <p>Satisfaction vs. expectations. Cognitive dissonance: discomfort after difficult purchase decisions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concepts-analysis">
+                <h5>Types of Consumer Buying Behavior</h5>
+                <div class="components-grid">
+                    <div class="component-item">
+                        <h7>Complex Buying Behavior</h7>
+                        <p>High involvement, significant differences between brands (e.g., car, house). Extensive information processing</p>
+                    </div>
+                    <div class="component-item">
+                        <h7>Dissonance-Reducing Buying</h7>
+                        <p>High involvement, few differences between brands. Seek reassurance after purchase</p>
+                    </div>
+                    <div class="component-item">
+                        <h7>Habitual Buying Behavior</h7>
+                        <p>Low involvement, few differences. Based on habit rather than strong brand loyalty</p>
+                    </div>
+                    <div class="component-item">
+                        <h7>Variety-Seeking Buying</h7>
+                        <p>Low involvement, significant differences. Frequent brand switching for variety</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="practical-application">
+                <h5>Practical Application: Understanding Your Customer</h5>
+                <div class="case-study-box">
+                    <div class="case-header">
+                        <h6>Case Study: Marketing to Different Generations</h6>
+                        <span class="case-badge">Segmentation Strategy</span>
+                    </div>
+                    <div class="case-challenge">
+                        <h7>Marketing Challenge</h7>
+                        <p>A smartphone company wants to target different age segments with the same product line.</p>
+                    </div>
+                    <div class="case-solution">
+                        <h7>Consumer Behavior Insights</h7>
+                        <div class="strategy-list">
+                            <div class="strategy-item">
+                                <div class="strategy-icon">G</div>
+                                <p><strong>Gen Z (18-25):</strong> Value authenticity, social responsibility, influenced by social media and peer reviews</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">M</div>
+                                <p><strong>Millennials (26-40):</strong> Convenience-driven, research-oriented, influenced by online reviews and experiences</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">G</div>
+                                <p><strong>Gen X (41-56):</strong> Value work-life balance, brand loyal when satisfied, influenced by family needs</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">B</div>
+                                <p><strong>Boomers (57+):</strong> Quality-focused, prefer personal service, influenced by traditional media</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-strategies">
+                        <h7>Strategic Implications</h7>
+                        <p>Understanding consumer behavior enables tailored marketing messages, appropriate channel selection, and effective positioning across different customer segments.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-takeaways">
+                <h5>Key Takeaways</h5>
+                <ul>
+                    <li><strong>Multi-factorial:</strong> Consumer behavior results from cultural, social, personal, and psychological factors</li>
+                    <li><strong>Decision Journey:</strong> Purchase decisions follow a five-stage process from problem recognition to post-purchase behavior</li>
+                    <li><strong>Segment Variation:</strong> Different consumer groups exhibit distinct buying behaviors requiring tailored approaches</li>
+                    <li><strong>Cognitive Dissonance:</strong> Post-purchase discomfort can be managed through reassurance and support</li>
+                    <li><strong>Marketing Application:</strong> Understanding behavior enables effective segmentation, targeting, and positioning</li>
+                </ul>
+            </div>
         `
     },
     {
@@ -254,23 +717,262 @@ const lectureData = [
         description: "STP Strategy: Segmentation, Targeting, Positioning",
         descriptionEn: "STP Strategy: Segmentation, Targeting, Positioning",
         content: `
-            <h4>Market Segmentation, Targeting, and Positioning (STP)</h4>
-            <p><strong>STP Strategy Definition:</strong> A strategic approach that divides markets into segments, selects target markets, and positions products.</p>
+            <div class="lecture-overview">
+                <div class="concept-box">
+                    <h4>Market Segmentation, Targeting, and Positioning (STP)</h4>
+                    <div class="definition-card">
+                        <h5>What is STP Strategy?</h5>
+                        <div class="definition-content">
+                            <p><strong>STP Definition:</strong> A strategic marketing framework that involves dividing markets into distinct segments (Segmentation), selecting the most attractive segments to serve (Targeting), and creating a distinctive market position for the product (Positioning).</p>
+                            <div class="key-points">
+                                <span class="badge bg-primary">Customer-Centric</span>
+                                <span class="badge bg-success">Resource Efficiency</span>
+                                <span class="badge bg-warning">Competitive Focus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <h5>STP Process Steps:</h5>
-            <ol>
-                <li><strong>Segmentation:</strong> Divide market into distinct groups</li>
-                <li><strong>Targeting:</strong> Select specific segments to serve</li>
-                <li><strong>Positioning:</strong> Create product positioning in target markets</li>
-            </ol>
+            <div class="strategy-elements">
+                <h5>The STP Process</h5>
+                <div class="planning-steps">
+                    <div class="step-item">
+                        <div class="step-number">S</div>
+                        <div class="step-content">
+                            <h7>Segmentation</h7>
+                            <p>Divide the total market into distinct groups with similar needs, characteristics, or behaviors</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">T</div>
+                        <div class="step-content">
+                            <h7>Targeting</h7>
+                            <p>Evaluate and select one or more segments to enter based on attractiveness and company capabilities</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">P</div>
+                        <div class="step-content">
+                            <h7>Positioning</h7>
+                            <p>Create a clear, distinctive, and desirable place for the product in target customers' minds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <h6>Market Segmentation Bases:</h6>
-            <ul>
-                <li><strong>Demographic:</strong> Age, gender, income, education</li>
-                <li><strong>Geographic:</strong> Region, climate, population density</li>
-                <li><strong>Psychographic:</strong> Lifestyle, values, personality</li>
-                <li><strong>Behavioral:</strong> Usage rate, benefits sought, loyalty</li>
-            </ul>
+            <div class="concepts-analysis">
+                <h5>Step 1: Market Segmentation</h5>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Segmentation Bases</h6>
+                        <span class="concept-badge">Variables for Division</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Demographic</h7>
+                            <p>Age, gender, income, education, occupation, family size, religion, nationality, social class</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Geographic</h7>
+                            <p>Region, country, city size, climate, population density, urban/rural</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Psychographic</h7>
+                            <p>Lifestyle, personality, values, interests, opinions (AIO), social class</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Behavioral</h7>
+                            <p>Occasions, benefits sought, user status, usage rate, loyalty status, buyer readiness</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Effective Segmentation Criteria</h6>
+                        <span class="concept-badge">Quality Standards</span>
+                    </div>
+                    <div class="elements-grid">
+                        <div class="element-card">
+                            <div class="element-icon">M</div>
+                            <h6>Measurable</h6>
+                            <p>Size, purchasing power, and characteristics can be measured</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="element-icon">A</div>
+                            <h6>Accessible</h6>
+                            <p>Can be effectively reached and served through marketing efforts</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="element-icon">S</div>
+                            <h6>Substantial</h6>
+                            <p>Large and profitable enough to serve with tailored marketing</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="element-icon">D</div>
+                            <h6>Differentiable</h6>
+                            <p>Segments respond differently to different marketing mix elements</p>
+                        </div>
+                        <div class="element-card">
+                            <div class="element-icon">A</div>
+                            <h6>Actionable</h6>
+                            <p>Company can design effective programs to attract and serve the segment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concepts-analysis">
+                <h5>Step 2: Target Market Selection</h5>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Targeting Strategies</h6>
+                        <span class="concept-badge">Market Coverage</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Undifferentiated (Mass) Marketing</h7>
+                            <p>Ignore segment differences, target whole market with one offering. Economy of scale but ignores diversity.</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Differentiated (Segmented) Marketing</h7>
+                            <p>Target several segments with separate offerings. Higher sales, higher costs, resource intensity.</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Concentrated (Niche) Marketing</h7>
+                            <p>Focus on one or few segments. Deep understanding, strong positioning, higher risk.</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Micromarketing</h7>
+                            <p>Local or individual marketing. Tailor products and programs to specific locations or individuals.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Segment Attractiveness Evaluation</h6>
+                        <span class="concept-badge">Selection Criteria</span>
+                    </div>
+                    <ul>
+                        <li><strong>Segment Size and Growth:</strong> Current sales, projected growth rates, expected profitability</li>
+                        <li><strong>Structural Attractiveness:</strong> Competitor presence, substitute threats, buyer/supplier power</li>
+                        <li><strong>Company Objectives:</strong> Alignment with long-term goals and strategic direction</li>
+                        <li><strong>Company Resources:</strong> Capabilities to serve segment effectively and profitably</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="concepts-analysis">
+                <h5>Step 3: Market Positioning</h5>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Positioning Strategies</h6>
+                        <span class="concept-badge">Differentiation</span>
+                    </div>
+                    <div class="components-grid">
+                        <div class="component-item">
+                            <h7>Product Attribute</h7>
+                            <p>Position based on specific product features or benefits (e.g., "most reliable")</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Price/Quality</h7>
+                            <p>Position based on price point and quality perception (e.g., luxury vs. value)</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Use/Application</h7>
+                            <p>Position based on how or when product is used (e.g., "for active lifestyles")</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>User Category</h7>
+                            <p>Position based on user type (e.g., "for professionals")</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Competitor</h7>
+                            <p>Position directly against competitor (e.g., "better than X")</p>
+                        </div>
+                        <div class="component-item">
+                            <h7>Benefit</h7>
+                            <p>Position based on unique benefit (e.g., "freshest taste")</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Positioning Statement Framework</h6>
+                        <span class="concept-badge">Strategic Statement</span>
+                    </div>
+                    <div class="example-box">
+                        <p><strong>Template:</strong> For [target segment], our [product/brand] is the [frame of reference] that provides [point of difference] because [reason to believe].</p>
+                        <p><strong>Example:</strong> For health-conscious young professionals, FitLife cereal is the breakfast option that provides maximum nutrition with minimum calories because it contains 100% natural ingredients with no added sugar.</p>
+                    </div>
+                </div>
+                
+                <div class="concept-section">
+                    <div class="concept-header">
+                        <h6>Perceptual Mapping</h6>
+                        <span class="concept-badge">Visual Tool</span>
+                    </div>
+                    <p>A visual representation of how consumers perceive brands on key attributes relative to competitors.</p>
+                    <ul>
+                        <li><strong>Step 1:</strong> Identify key dimensions (e.g., price vs. quality)</li>
+                        <li><strong>Step 2:</strong> Survey consumers on brand perceptions</li>
+                        <li><strong>Step 3:</strong> Plot brands on two-dimensional map</li>
+                        <li><strong>Step 4:</strong> Identify positioning gaps and opportunities</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="practical-application">
+                <h5>Practical Application: STP in Action</h5>
+                <div class="case-study-box">
+                    <div class="case-header">
+                        <h6>Case Study: Electric Vehicle Market</h6>
+                        <span class="case-badge">Complete STP Analysis</span>
+                    </div>
+                    <div class="case-challenge">
+                        <h7>Market Context</h7>
+                        <p>An automotive company wants to enter the growing electric vehicle (EV) market.</p>
+                    </div>
+                    <div class="case-solution">
+                        <h7>STP Strategy</h7>
+                        <div class="strategy-list">
+                            <div class="strategy-item">
+                                <div class="strategy-icon">S</div>
+                                <p><strong>Segmentation:</strong> By income (luxury vs. affordable), by use (urban commuter vs. family), by values (eco-conscious vs. tech enthusiasts)</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">T</div>
+                                <p><strong>Targeting:</strong> Focus on affluent urban professionals (35-50) who value sustainability and technology, substantial segment with growth potential</p>
+                            </div>
+                            <div class="strategy-item">
+                                <div class="strategy-icon">P</div>
+                                <p><strong>Positioning:</strong> "Premium eco-friendly technology for the modern urban lifestyle" - combining luxury, sustainability, and cutting-edge features</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-strategies">
+                        <h7>Results</h7>
+                        <p>Clear differentiation from both luxury gas vehicles and basic EVs. Strong brand identity attracts target segment willing to pay premium for aligned values.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-takeaways">
+                <h5>Key Takeaways</h5>
+                <ul>
+                    <li><strong>Customer Focus:</strong> STP shifts from mass marketing to customer-centric marketing</li>
+                    <li><strong>Segmentation Quality:</strong> Effective segments must be measurable, accessible, substantial, differentiable, and actionable</li>
+                    <li><strong>Strategic Targeting:</strong> Select segments based on attractiveness, fit with objectives, and resource capabilities</li>
+                    <li><strong>Differentiated Positioning:</strong> Create unique value proposition that distinguishes from competitors</li>
+                    <li><strong>Integration:</strong> All three steps must align: segment needs → target selection → differentiated position</li>
+                </ul>
+            </div>
         `
     },
     {
