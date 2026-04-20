@@ -1589,222 +1589,7 @@ const lectureData = [
                     </div>
                 </div>
             </div>
-        `
-    },
-    {
-        id: 8,
-        title: "Lecture 9: Distribution Strategy and Supply Chain Management",
-        titleEn: "Lecture 9: Distribution Strategy and Supply Chain Management",
-        topics: ["distribution strategy", "supply chain management", "channel management", "logistics", "retail strategy", "e-commerce", "distribution channels"],
-        description: "Strategic distribution planning and supply chain optimization",
-        descriptionEn: "Strategic distribution planning and supply chain optimization",
-        content: `
-            <div class="lecture-overview">
-                <div class="concept-box">
-                    <h4>Distribution Strategy Overview</h4>
-                    <div class="definition-card">
-                        <h5>What is Distribution Strategy?</h5>
-                        <div class="definition-content">
-                            <p><strong>Distribution Strategy Definition:</strong> The plan for making products available to target customers through appropriate channels, locations, and timing.</p>
-                            <div class="key-points">
-                                <span class="badge bg-primary">Channel Management</span>
-                                <span class="badge bg-success">Logistics Optimization</span>
-                                <span class="badge bg-warning">Customer Access</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="concepts-analysis">
-                <h5>Distribution Channel Types</h5>
-                
-                <div class="concept-section">
-                    <div class="concept-header">
-                        <h6>Channel Structure Options</h6>
-                        <span class="concept-badge">Channel Design</span>
-                    </div>
-                    <div class="components-grid">
-                        <div class="component-item">
-                            <h7>Direct Channels</h7>
-                            <p>Manufacturer sells directly to end customers</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Indirect Channels</h7>
-                            <p>Manufacturer uses intermediaries to reach customers</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Hybrid Channels</h7>
-                            <p>Combination of direct and indirect channels</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Digital Channels</h7>
-                            <p>Online platforms, mobile apps, social commerce</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="concept-section">
-                    <div class="concept-header">
-                        <h6>Channel Intensity Strategies</h6>
-                        <span class="concept-badge">Market Coverage</span>
-                    </div>
-                    <div class="components-grid">
-                        <div class="component-item">
-                            <h7>Intensive Distribution</h7>
-                            <p>Products available in as many outlets as possible</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Selective Distribution</h7>
-                            <p>Limited number of selected outlets</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Exclusive Distribution</h7>
-                            <p>Single outlet in specific geographic area</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Omnichannel Distribution</h7>
-                            <p>Seamless integration across all channels</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="concept-section">
-                    <div class="concept-header">
-                        <h6>Channel Member Roles</h6>
-                        <span class="concept-badge">Partner Management</span>
-                    </div>
-                    <div class="components-grid">
-                        <div class="component-item">
-                            <h7>Wholesalers</h7>
-                            <p>Bulk purchasing, inventory management, credit extension</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Retailers</h7>
-                            <p>Final sales to consumers, store operations, customer service</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Distributors</h7>
-                            <p>Market coverage, local expertise, relationship management</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Agents/Brokers</h7>
-                            <p>Market facilitation, negotiation, commission-based sales</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="concepts-analysis">
-                <h5>Supply Chain Management</h5>
-                
-                <div class="concept-section">
-                    <div class="concept-header">
-                        <h6>Supply Chain Components</h6>
-                        <span class="concept-badge">Integrated System</span>
-                    </div>
-                    <div class="components-grid">
-                        <div class="component-item">
-                            <h7>Procurement</h7>
-                            <p>Raw material sourcing, supplier relationships, quality control</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Production</h7>
-                            <p>Manufacturing processes, capacity planning, quality assurance</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Inventory Management</h7>
-                            <p>Stock levels, reorder points, safety stock, JIT systems</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Logistics</h7>
-                            <p>Transportation, warehousing, order fulfillment, delivery</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="concept-section">
-                    <div class="concept-header">
-                        <h6>Logistics Management</h6>
-                        <span class="concept-badge">Operational Excellence</span>
-                    </div>
-                    <div class="components-grid">
-                        <div class="component-item">
-                            <h7>Transportation</h7>
-                            <p>Mode selection, routing optimization, cost management</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Warehousing</h7>
-                            <p>Storage systems, layout optimization, automation</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Order Processing</h7>
-                            <p>Order fulfillment, picking, packing, shipping</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Reverse Logistics</h7>
-                            <p>Returns management, recycling, product disposal</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="concept-section">
-                    <div class="concept-header">
-                        <h6>Retail Strategy Evolution</h6>
-                        <span class="concept-badge">Modern Retailing</span>
-                    </div>
-                    <div class="components-grid">
-                        <div class="component-item">
-                            <h7>Store Format Strategy</h7>
-                            <p>Supermarkets, specialty stores, discount stores, convenience</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Location Strategy</h7>
-                            <p>Site selection, trade area analysis, clustering</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Merchandising Strategy</h7>
-                            <p>Product assortment, visual merchandising, category management</p>
-                        </div>
-                        <div class="component-item">
-                            <h7>Customer Experience</h7>
-                            <p>Store atmosphere, service quality, omnichannel integration</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="practical-application">
-                <h5>Digital Distribution Transformation</h5>
-                <div class="case-study-box">
-                    <div class="case-header">
-                        <h6>E-commerce Integration</h6>
-                        <span class="case-badge">Digital Strategy</span>
-                    </div>
-                    <div class="case-strategies">
-                        <h7>Key Digital Distribution Elements</h7>
-                        <div class="strategy-list">
-                            <div class="strategy-item">
-                                <div class="strategy-icon">1</div>
-                                <p>Develop omnichannel customer experience</p>
-                            </div>
-                            <div class="strategy-item">
-                                <div class="strategy-icon">2</div>
-                                <p>Implement real-time inventory management</p>
-                            </div>
-                            <div class="strategy-item">
-                                <div class="strategy-icon">3</div>
-                                <p>Optimize last-mile delivery solutions</p>
-                            </div>
-                            <div class="strategy-item">
-                                <div class="strategy-icon">4</div>
-                                <p>Leverage data analytics for demand forecasting</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `
+        `,
     },
     {
         id: 9,
@@ -2501,6 +2286,9 @@ function startQuiz() {
             const questionsPerLecture = 10;
             
             for (let lectureId = 2; lectureId <= 9; lectureId++) {
+                // Skip Lecture 8 (Place/Distribution) - excluded from exam
+                if (lectureId === 8) continue;
+                
                 const lectureQuestions = extendedQuizQuestions.filter(q => {
                     if (!q || !q.question) return false;
                     const questionText = q.question.toLowerCase();
@@ -3173,8 +2961,7 @@ function showTopicSelection() {
         { name: "Market Segmentation (STP)", week: 5, desc: "STP strategy and target market selection", key: "market" },
         { name: "Product Strategy", week: 6, desc: "Product development and brand management", key: "product" },
         { name: "Pricing Strategy", week: 7, desc: "Pricing methods and revenue management", key: "price" },
-        { name: "Place/Distribution", week: 8, desc: "Distribution channels and logistics", key: "place" },
-        { name: "Promotion Strategy", week: 9, desc: "Advertising and promotional mix", key: "promotion" }
+        { name: "Promotion Strategy", week: 8, desc: "Advertising and promotional mix", key: "promotion" }
     ];
     
     // Generate topic cards
@@ -3226,7 +3013,6 @@ function showLectureSelection() {
         { id: 5, title: "Lecture 5: Segmentation, Targeting, Positioning", questions: 15, topics: ["STP", "Segmentation", "Targeting"] },
         { id: 6, title: "Lecture 6: Product Strategy", questions: 15, topics: ["Product", "Brand", "Lifecycle", "Development"] },
         { id: 7, title: "Lecture 7: Pricing Strategy", questions: 15, topics: ["Pricing", "Cost", "Elasticity", "Revenue"] },
-        { id: 8, title: "Lecture 8: Place/Distribution", questions: 15, topics: ["Distribution", "Channel", "Logistics", "Retail"] },
         { id: 9, title: "Lecture 9: Promotion", questions: 15, topics: ["Promotion", "Advertising", "IMC", "Communication"] }
     ];
     
