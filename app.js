@@ -3314,45 +3314,57 @@ function startLectureQuiz(lectureId) {
         try {
             // Load quiz questions from quiz-database.js filtered by lecture
             if (typeof extendedQuizQuestions !== 'undefined' && Array.isArray(extendedQuizQuestions)) {
-                // Filter questions by lecture topic
-                const lecture = lectureData.find(l => l.id === lectureId);
-                if (lecture && lecture.topics) {
-                    // Find questions related to lecture topics
-                    const lectureTopics = lecture.topics.map(topic => topic.toLowerCase());
-                    currentQuiz = extendedQuizQuestions.filter(question => {
-                        if (!question || !question.question) return false;
-                        const questionText = question.question.toLowerCase();
-                        return lectureTopics.some(topic => questionText.includes(topic));
-                    }).slice(0, 10); // Take first 10 matching questions
-                } else {
-                    throw new Error(`Lecture ${lectureId} not found or has no topics`);
+                // First, try to find questions with matching lectureId (new precise matching)
+                let lectureQuestions = extendedQuizQuestions.filter(question => {
+                    return question && question.lectureId === lectureId;
+                });
+                
+                // If we don't have enough questions with lectureId, supplement with topic-based matching
+                const MIN_QUESTIONS = 15;
+                if (lectureQuestions.length < MIN_QUESTIONS) {
+                    const lecture = lectureData.find(l => l.id === lectureId);
+                    if (lecture && lecture.topics) {
+                        const lectureTopics = lecture.topics.map(topic => topic.toLowerCase());
+                        const topicMatchedQuestions = extendedQuizQuestions.filter(question => {
+                            if (!question || !question.question || question.lectureId === lectureId) return false;
+                            const questionText = question.question.toLowerCase();
+                            return lectureTopics.some(topic => questionText.includes(topic));
+                        });
+                        // Combine lectureId-matched and topic-matched questions
+                        lectureQuestions = [...lectureQuestions, ...topicMatchedQuestions];
+                    }
+                }
+                
+                // Shuffle and take up to 20 questions
+                currentQuiz = lectureQuestions
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 20);
+                
+                // If still no questions, use general fallback
+                if (currentQuiz.length === 0) {
+                    throw new Error(`No questions found for lecture ${lectureId}`);
                 }
             } else {
                 throw new Error('Quiz database not available');
             }
-            
-            // If no specific questions found, use general questions
-            if (!currentQuiz || currentQuiz.length === 0) {
-                currentQuiz = [
-                    {
-                        question: `What is the main concept covered in Lecture ${lectureId}?`,
-                        options: ["Concept A", "Concept B", "Concept C", "Concept D"],
-                        correct: 0,
-                        explanation: "This question tests your understanding of the lecture content."
-                    }
-                ];
-            }
         } catch (error) {
             console.error('Error loading lecture quiz:', error);
-            // Fallback questions
-            currentQuiz = [
+            // Fallback questions based on lecture content
+            const fallbackQuestions = [
                 {
-                    question: `What is the main concept covered in Lecture ${lectureId}?`,
-                    options: ["Concept A", "Concept B", "Concept C", "Concept D"],
+                    question: `What is the main focus of Lecture ${lectureId}?`,
+                    options: ["Marketing fundamentals", "Strategic planning", "Environmental analysis", "Consumer behavior"],
+                    correct: Math.min(lectureId - 1, 3),
+                    explanation: `This question tests your understanding of Lecture ${lectureId}'s core concepts.`
+                },
+                {
+                    question: `Which of the following is a key learning objective of Lecture ${lectureId}?`,
+                    options: ["Understanding core concepts", "Applying strategic frameworks", "Analyzing market data", "Developing marketing plans"],
                     correct: 0,
-                    explanation: "This question tests your understanding of the lecture content."
+                    explanation: `Lecture ${lectureId} focuses on key marketing concepts and their practical applications.`
                 }
             ];
+            currentQuiz = fallbackQuestions;
         }
         
         currentQuestionIndex = 0;
