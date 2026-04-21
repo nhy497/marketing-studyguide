@@ -2391,6 +2391,88 @@ function startQuiz() {
     }
 }
 
+// Start Professor's Official Question Bank Quiz
+function startProfessorQuiz() {
+    // Load questions from professor's question bank
+    try {
+        if (typeof professorQuizQuestions !== 'undefined' && Array.isArray(professorQuizQuestions) && professorQuizQuestions.length > 0) {
+            // Shuffle questions and select all 49 questions
+            currentQuiz = [...professorQuizQuestions].sort(() => Math.random() - 0.5);
+        } else {
+            throw new Error('Professor quiz database not available');
+        }
+    } catch (error) {
+        console.error('Error loading professor quiz questions:', error);
+        alert('Error loading professor question bank. Please try again.');
+        return;
+    }
+    
+    currentQuestionIndex = 0;
+    quizScore = 0;
+    userAnswers = [];
+    quizStartTime = new Date();
+    
+    // Initialize quiz state
+    quizState.isActive = true;
+    quizState.quizType = 'professor';
+    quizState.quizId = generateQuizId();
+    quizState.lectureCoverage = [];
+    
+    // Clear any previous saved quiz state
+    clearQuizState();
+    
+    showQuizQuestion();
+    startQuizTimer();
+    startAutoSave();
+    
+    // Show translation controls
+    const translationControls = document.getElementById('quiz-translation-controls');
+    if (translationControls) {
+        translationControls.style.display = 'block';
+    }
+}
+
+// Start Practice Question Bank Quiz
+function startPracticeQuiz() {
+    // Load questions from practice question bank
+    try {
+        if (typeof practiceQuizQuestions !== 'undefined' && Array.isArray(practiceQuizQuestions) && practiceQuizQuestions.length > 0) {
+            // Shuffle questions and select all 30 questions
+            currentQuiz = [...practiceQuizQuestions].sort(() => Math.random() - 0.5);
+        } else {
+            throw new Error('Practice quiz database not available');
+        }
+    } catch (error) {
+        console.error('Error loading practice quiz questions:', error);
+        alert('Error loading practice question bank. Please try again.');
+        return;
+    }
+    
+    currentQuestionIndex = 0;
+    quizScore = 0;
+    userAnswers = [];
+    quizStartTime = new Date();
+    
+    // Initialize quiz state
+    quizState.isActive = true;
+    quizState.quizType = 'practice';
+    quizState.quizId = generateQuizId();
+    quizState.lectureCoverage = [];
+    
+    // Clear any previous saved quiz state
+    clearQuizState();
+    
+    showQuizQuestion();
+    startQuizTimer();
+    startAutoSave();
+    
+    // Show translation controls
+    const translationControls = document.getElementById('quiz-translation-controls');
+    if (translationControls) {
+        translationControls.style.display = 'block';
+    }
+}
+
 // Helper function to get lecture topics
 function getLectureTopics(lectureId) {
     const lecture = lectureData.find(l => l.id === lectureId);
