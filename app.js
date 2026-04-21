@@ -2303,7 +2303,45 @@ function loadQuizOptions() {
         <!-- New Question Bank Selection -->
         <div class="quiz-options mb-4">
             <h3><i class="fas fa-book-open"></i> Select Question Source</h3>
-            <p class="text-muted mb-3"><i class="fas fa-random"></i> Each quiz randomly selects <strong>10 questions</strong> from your chosen bank</p>
+            <p class="text-muted mb-3"><i class="fas fa-random"></i> Each quiz randomly selects <strong>10 questions</strong> from your chosen bank(s)</p>
+            
+            <!-- Question Bank Selection with Checkboxes -->
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <strong><i class="fas fa-check-square"></i> Choose Question Banks (Select one or both)</strong>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="form-check form-check-lg">
+                                <input class="form-check-input" type="checkbox" id="professorBankCheck" style="width: 24px; height: 24px; cursor: pointer;">
+                                <label class="form-check-label ms-2" for="professorBankCheck" style="cursor: pointer;">
+                                    <strong>Professor's Bank</strong><br>
+                                    <small class="text-muted">49 official exam questions</small>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-check form-check-lg">
+                                <input class="form-check-input" type="checkbox" id="practiceBankCheck" style="width: 24px; height: 24px; cursor: pointer;">
+                                <label class="form-check-label ms-2" for="practiceBankCheck" style="cursor: pointer;">
+                                    <strong>Practice Bank</strong><br>
+                                    <small class="text-muted">70 questions (Ch.2-10)</small>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <button class="btn btn-success btn-lg w-100 h-100" onclick="startMixedQuiz()">
+                                <i class="fas fa-play"></i> Start Quiz
+                            </button>
+                        </div>
+                    </div>
+                    <div id="bankSelectionError" class="alert alert-danger mt-2" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i> Please select at least one question bank.
+                    </div>
+                </div>
+            </div>
+            
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="card border-warning h-100">
@@ -2312,7 +2350,7 @@ function loadQuizOptions() {
                         </div>
                         <div class="card-body">
                             <p class="card-text">49 questions directly from professor's formal exam question bank. Actual exam-style questions.</p>
-                            <button class="btn btn-warning btn-lg w-100" onclick="startProfessorQuiz()">Start Professor's Quiz</button>
+                            <button class="btn btn-warning w-100" onclick="quickStartProfessorQuiz()">Quick Start (10 random)</button>
                         </div>
                     </div>
                 </div>
@@ -2323,7 +2361,7 @@ function loadQuizOptions() {
                         </div>
                         <div class="card-body">
                             <p class="card-text">70 practice questions covering Chapters 2-10 lecture content, similar style to professor's questions.</p>
-                            <button class="btn btn-info btn-lg w-100" onclick="startPracticeQuiz()">Start Practice Quiz</button>
+                            <button class="btn btn-info w-100" onclick="quickStartPracticeQuiz()">Quick Start (10 random)</button>
                         </div>
                     </div>
                 </div>
@@ -2492,6 +2530,81 @@ function startPracticeQuiz() {
     // Initialize quiz state
     quizState.isActive = true;
     quizState.quizType = 'practice';
+    quizState.quizId = generateQuizId();
+    quizState.lectureCoverage = [];
+    
+    // Clear any previous saved quiz state
+    clearQuizState();
+    
+    showQuizQuestion();
+    startQuizTimer();
+    startAutoSave();
+    
+    // Show translation controls
+    const translationControls = document.getElementById('quiz-translation-controls');
+    if (translationControls) {
+        translationControls.style.display = 'block';
+    }
+}
+
+// Quick start functions for individual banks (checkboxes not used)
+function quickStartProfessorQuiz() {
+    startProfessorQuiz();
+}
+
+function quickStartPracticeQuiz() {
+    startPracticeQuiz();
+}
+
+// Start Mixed Quiz from selected question banks
+function startMixedQuiz() {
+    const professorChecked = document.getElementById('professorBankCheck').checked;
+    const practiceChecked = document.getElementById('practiceBankCheck').checked;
+    const errorDiv = document.getElementById('bankSelectionError');
+    
+    // Check if at least one bank is selected
+    if (!professorChecked && !practiceChecked) {
+        errorDiv.style.display = 'block';
+        return;
+    }
+    
+    // Hide error message
+    errorDiv.style.display = 'none';
+    
+    // Combine questions from selected banks
+    let combinedQuestions = [];
+    
+    try {
+        if (professorChecked && typeof professorQuizQuestions !== 'undefined' && Array.isArray(professorQuizQuestions)) {
+            combinedQuestions = combinedQuestions.concat(professorQuizQuestions);
+        }
+        
+        if (practiceChecked && typeof practiceQuizQuestions !== 'undefined' && Array.isArray(practiceQuizQuestions)) {
+            combinedQuestions = combinedQuestions.concat(practiceQuizQuestions);
+        }
+        
+        if (combinedQuestions.length === 0) {
+            throw new Error('No question banks available');
+        }
+        
+        // Shuffle combined questions and select 10
+        const shuffled = combinedQuestions.sort(() => Math.random() - 0.5);
+        currentQuiz = shuffled.slice(0, 10);
+        
+    } catch (error) {
+        console.error('Error loading mixed quiz questions:', error);
+        alert('Error loading question banks. Please try again.');
+        return;
+    }
+    
+    currentQuestionIndex = 0;
+    quizScore = 0;
+    userAnswers = [];
+    quizStartTime = new Date();
+    
+    // Initialize quiz state
+    quizState.isActive = true;
+    quizState.quizType = 'mixed';
     quizState.quizId = generateQuizId();
     quizState.lectureCoverage = [];
     
