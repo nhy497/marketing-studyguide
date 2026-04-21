@@ -2396,8 +2396,9 @@ function startProfessorQuiz() {
     // Load questions from professor's question bank
     try {
         if (typeof professorQuizQuestions !== 'undefined' && Array.isArray(professorQuizQuestions) && professorQuizQuestions.length > 0) {
-            // Shuffle questions and select all 49 questions
-            currentQuiz = [...professorQuizQuestions].sort(() => Math.random() - 0.5);
+            // Shuffle questions and randomly select 10 questions
+            const shuffled = [...professorQuizQuestions].sort(() => Math.random() - 0.5);
+            currentQuiz = shuffled.slice(0, 10); // Select only 10 random questions
         } else {
             throw new Error('Professor quiz database not available');
         }
@@ -2437,8 +2438,9 @@ function startPracticeQuiz() {
     // Load questions from practice question bank
     try {
         if (typeof practiceQuizQuestions !== 'undefined' && Array.isArray(practiceQuizQuestions) && practiceQuizQuestions.length > 0) {
-            // Shuffle questions and select all 30 questions
-            currentQuiz = [...practiceQuizQuestions].sort(() => Math.random() - 0.5);
+            // Shuffle questions and randomly select 10 questions from the 70 available
+            const shuffled = [...practiceQuizQuestions].sort(() => Math.random() - 0.5);
+            currentQuiz = shuffled.slice(0, 10); // Select only 10 random questions
         } else {
             throw new Error('Practice quiz database not available');
         }
