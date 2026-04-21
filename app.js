@@ -2299,9 +2299,43 @@ function loadQuizOptions() {
     
     quizContainer.innerHTML = `
         ${resumeSection}
+        
+        <!-- New Question Bank Selection -->
+        <div class="quiz-options mb-4">
+            <h3><i class="fas fa-book-open"></i> Select Question Source</h3>
+            <p class="text-muted mb-3"><i class="fas fa-random"></i> Each quiz randomly selects <strong>10 questions</strong> from your chosen bank</p>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card border-warning h-100">
+                        <div class="card-header bg-warning text-dark">
+                            <strong><i class="fas fa-chalkboard-teacher"></i> Professor's Official Question Bank</strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">49 questions directly from professor's formal exam question bank. Actual exam-style questions.</p>
+                            <button class="btn btn-warning btn-lg w-100" onclick="startProfessorQuiz()">Start Professor's Quiz</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card border-info h-100">
+                        <div class="card-header bg-info text-white">
+                            <strong><i class="fas fa-pencil-alt"></i> Practice Questions (My Creation)</strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">70 practice questions covering Chapters 2-10 lecture content, similar style to professor's questions.</p>
+                            <button class="btn btn-info btn-lg w-100" onclick="startPracticeQuiz()">Start Practice Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="my-4">
+        
+        <!-- Original Quiz Options -->
         <div class="quiz-options">
-            <h3>Choose Quiz Type</h3>
-            <div class="quiz-option-buttons">
+            <h4><i class="fas fa-graduation-cap"></i> Original Quiz Options</h4>
+            <div class="quiz-option-buttons mt-3">
                 <button class="btn btn-primary btn-lg" onclick="startQuiz()">Full Quiz (80 Questions)</button>
                 <button class="btn btn-info btn-lg" onclick="startTopicQuiz()">Topic Quiz</button>
                 <button class="btn btn-success btn-lg" onclick="showLectureSelection()">Lecture Quiz</button>
