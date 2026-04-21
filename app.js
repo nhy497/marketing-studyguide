@@ -17,6 +17,18 @@ let userProgress = {
     language: 'en'
 };
 
+// Quiz state management for pause/resume functionality
+let quizState = {
+    isActive: false,
+    quizType: null, // 'full', 'lecture', 'topic', 'adaptive'
+    quizId: null, // unique identifier for each quiz session
+    lectureCoverage: [], // track which lectures have been covered
+    autoSaveInterval: null
+};
+
+const QUIZ_STATE_KEY = 'marketingQuizState';
+const AUTO_SAVE_INTERVAL = 30000; // Auto-save every 30 seconds
+
 // Lecture data with clean English content
 const lectureData = [
     {
@@ -2261,11 +2273,36 @@ function loadQuizOptions() {
     const quizContainer = document.getElementById('quiz-container');
     if (!quizContainer) return;
     
+    // Check for saved quiz
+    const savedState = loadQuizState();
+    let resumeSection = '';
+    
+    if (savedState) {
+        resumeSection = `
+            <div class="resume-quiz-container mb-4">
+                <div class="alert alert-info">
+                    <h5><i class="fas fa-history"></i> You have a quiz in progress!</h5>
+                    <p>Question ${savedState.currentQuestionIndex + 1} of ${savedState.totalQuestions} | Score: ${savedState.quizScore}</p>
+                    ${savedState.lectureCoverage.length > 0 ? `
+                    <p class="mb-2"><strong>Chapters covered:</strong> ${savedState.lectureCoverage.map(id => getLectureNameById(id)).join(', ')}</p>
+                    ` : ''}
+                    <button class="btn btn-success" onclick="restoreQuiz()">
+                        <i class="fas fa-play"></i> Resume Where You Left Off
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm ms-2" onclick="discardSavedQuiz()">
+                        Discard
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+    
     quizContainer.innerHTML = `
+        ${resumeSection}
         <div class="quiz-options">
             <h3>Choose Quiz Type</h3>
             <div class="quiz-option-buttons">
-                <button class="btn btn-primary btn-lg" onclick="startQuiz()">Full Quiz</button>
+                <button class="btn btn-primary btn-lg" onclick="startQuiz()">Full Quiz (80 Questions)</button>
                 <button class="btn btn-info btn-lg" onclick="startTopicQuiz()">Topic Quiz</button>
                 <button class="btn btn-success btn-lg" onclick="showLectureSelection()">Lecture Quiz</button>
                 <button class="btn btn-warning btn-lg" onclick="startAdaptiveQuiz()">Adaptive Quiz</button>
@@ -2334,8 +2371,18 @@ function startQuiz() {
     userAnswers = []; // Reset user answers for review mode
     quizStartTime = new Date();
     
+    // Initialize quiz state for pause/resume functionality
+    quizState.isActive = true;
+    quizState.quizType = 'full';
+    quizState.quizId = generateQuizId();
+    quizState.lectureCoverage = [];
+    
+    // Clear any previous saved quiz state
+    clearQuizState();
+    
     showQuizQuestion();
     startQuizTimer();
+    startAutoSave();
     
     // Show translation controls
     const translationControls = document.getElementById('quiz-translation-controls');
@@ -2437,6 +2484,16 @@ function showQuizQuestion() {
         }
     }
     
+    // Update lecture coverage for this question
+    updateLectureCoverage();
+    
+    // Generate lecture coverage tags
+    const lectureTags = quizState.lectureCoverage.length > 0 ? 
+        `<div class="lecture-coverage-bar">
+            <span class="lecture-coverage-label"><i class="fas fa-book-open"></i> Chapters:</span>
+            ${quizState.lectureCoverage.map(id => `<span class="lecture-coverage-tag">${getLectureNameById(id)}</span>`).join('')}
+        </div>` : '';
+    
     quizContainer.innerHTML = `
         <div class="quiz-question">
             <!-- Progress Bar -->
@@ -2447,6 +2504,9 @@ function showQuizQuestion() {
                 <div class="quiz-progress-text">${currentQuestionIndex + 1} / ${currentQuiz.length} (${progressPercent}%)</div>
             </div>
             
+            <!-- Lecture Coverage Bar -->
+            ${lectureTags}
+            
             <!-- Question Navigation Dots -->
             <div class="question-nav-dots">${navDots}</div>
             
@@ -2456,6 +2516,9 @@ function showQuizQuestion() {
                     <div class="quiz-info">
                         <span class="badge bg-info me-2">Score: ${quizScore}/${currentQuiz.length}</span>
                         <span class="badge bg-secondary" id="quizTimer">${timeDisplay}</span>
+                        <button class="btn btn-sm btn-warning ms-2" onclick="pauseQuiz()" title="Pause Quiz (Esc)">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
                     </div>
                 </div>
             </div>
@@ -2483,6 +2546,11 @@ function showQuizQuestion() {
     
     // Setup keyboard navigation
     setupKeyboardNavigation();
+    
+    // Auto-save quiz state
+    if (quizState.isActive) {
+        saveQuizState();
+    }
 }
 
 // Enhanced translation function for quiz content (Chinese to English)
@@ -2714,6 +2782,9 @@ function finishQuiz() {
     userProgress.quizScores.push(quizResults);
     saveUserProgress();
     
+    // Clear quiz state and stop auto-save
+    clearQuizState();
+    
     // Remove keyboard listener
     document.removeEventListener('keydown', handleQuizKeydown);
     
@@ -2914,6 +2985,13 @@ function handleQuizKeydown(e) {
             continueToNextQuestion();
             return;
         }
+    }
+    
+    // Escape key to pause quiz
+    if (e.key === 'Escape') {
+        e.preventDefault();
+        pauseQuiz();
+        return;
     }
 }
 
@@ -3616,6 +3694,245 @@ function loadUserProgress() {
 // Save user progress
 function saveUserProgress() {
     localStorage.setItem('marketingStudyProgress', JSON.stringify(userProgress));
+}
+
+// Save current quiz state for pause/resume functionality
+function saveQuizState() {
+    if (!quizState.isActive || currentQuiz.length === 0) return;
+    
+    const state = {
+        quizType: quizState.quizType,
+        quizId: quizState.quizId,
+        currentQuestionIndex: currentQuestionIndex,
+        quizScore: quizScore,
+        userAnswers: userAnswers,
+        quizStartTime: quizStartTime ? quizStartTime.toISOString() : null,
+        currentQuiz: currentQuiz,
+        lectureCoverage: quizState.lectureCoverage,
+        totalQuestions: currentQuiz.length,
+        timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem(QUIZ_STATE_KEY, JSON.stringify(state));
+    console.log('Quiz state saved at question', currentQuestionIndex + 1);
+}
+
+// Load saved quiz state
+function loadQuizState() {
+    try {
+        const saved = localStorage.getItem(QUIZ_STATE_KEY);
+        if (!saved) return null;
+        
+        const state = JSON.parse(saved);
+        
+        // Check if quiz is not too old (24 hours)
+        const savedTime = new Date(state.timestamp);
+        const now = new Date();
+        const hoursDiff = (now - savedTime) / (1000 * 60 * 60);
+        
+        if (hoursDiff > 24) {
+            clearQuizState();
+            return null;
+        }
+        
+        return state;
+    } catch (error) {
+        console.error('Error loading quiz state:', error);
+        return null;
+    }
+}
+
+// Clear saved quiz state
+function clearQuizState() {
+    localStorage.removeItem(QUIZ_STATE_KEY);
+    quizState.isActive = false;
+    quizState.quizType = null;
+    quizState.quizId = null;
+    quizState.lectureCoverage = [];
+    if (quizState.autoSaveInterval) {
+        clearInterval(quizState.autoSaveInterval);
+        quizState.autoSaveInterval = null;
+    }
+}
+
+// Update lecture coverage based on current question
+function updateLectureCoverage() {
+    if (!currentQuiz[currentQuestionIndex]) return;
+    
+    const currentQuestion = currentQuiz[currentQuestionIndex];
+    if (currentQuestion.lectureId && !quizState.lectureCoverage.includes(currentQuestion.lectureId)) {
+        quizState.lectureCoverage.push(currentQuestion.lectureId);
+    }
+}
+
+// Get lecture name by ID
+function getLectureNameById(lectureId) {
+    const lecture = lectureData.find(l => l.id === lectureId);
+    return lecture ? lecture.title.split(':')[0] : `Lecture ${lectureId}`;
+}
+
+// Generate unique quiz ID
+function generateQuizId() {
+    return 'quiz_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+// Start auto-save interval
+function startAutoSave() {
+    if (quizState.autoSaveInterval) {
+        clearInterval(quizState.autoSaveInterval);
+    }
+    
+    quizState.autoSaveInterval = setInterval(() => {
+        if (quizState.isActive) {
+            saveQuizState();
+        }
+    }, AUTO_SAVE_INTERVAL);
+}
+
+// Pause quiz
+function pauseQuiz() {
+    if (!quizState.isActive) return;
+    
+    saveQuizState();
+    clearInterval(quizTimerInterval);
+    quizState.isActive = false;
+    
+    // Show pause modal
+    const quizContainer = document.getElementById('quiz-container');
+    if (quizContainer) {
+        const pauseOverlay = document.createElement('div');
+        pauseOverlay.id = 'quizPauseOverlay';
+        pauseOverlay.className = 'quiz-pause-overlay';
+        pauseOverlay.innerHTML = `
+            <div class="quiz-pause-content">
+                <h4><i class="fas fa-pause-circle"></i> Quiz Paused</h4>
+                <p>Your progress has been saved.</p>
+                <div class="pause-stats">
+                    <div class="pause-stat">
+                        <span class="pause-stat-value">${currentQuestionIndex + 1}</span>
+                        <span class="pause-stat-label">Current Question</span>
+                    </div>
+                    <div class="pause-stat">
+                        <span class="pause-stat-value">${currentQuiz.length}</span>
+                        <span class="pause-stat-label">Total Questions</span>
+                    </div>
+                    <div class="pause-stat">
+                        <span class="pause-stat-value">${quizScore}</span>
+                        <span class="pause-stat-label">Correct So Far</span>
+                    </div>
+                </div>
+                ${quizState.lectureCoverage.length > 0 ? `
+                <div class="pause-lectures">
+                    <h6>Chapters Covered:</h6>
+                    <div class="pause-lecture-tags">
+                        ${quizState.lectureCoverage.map(id => `<span class="pause-lecture-tag">${getLectureNameById(id)}</span>`).join('')}
+                    </div>
+                </div>
+                ` : ''}
+                <div class="pause-actions">
+                    <button class="btn btn-primary" onclick="resumeQuiz()">
+                        <i class="fas fa-play"></i> Resume Quiz
+                    </button>
+                    <button class="btn btn-secondary" onclick="exitQuiz()">
+                        <i class="fas fa-home"></i> Exit to Menu
+                    </button>
+                </div>
+            </div>
+        `;
+        quizContainer.appendChild(pauseOverlay);
+    }
+}
+
+// Resume quiz
+function resumeQuiz() {
+    const overlay = document.getElementById('quizPauseOverlay');
+    if (overlay) {
+        overlay.remove();
+    }
+    
+    quizState.isActive = true;
+    startQuizTimer();
+    startAutoSave();
+}
+
+// Exit quiz to menu
+function exitQuiz() {
+    clearQuizState();
+    showQuizOptions();
+}
+
+// Check for saved quiz on quiz options screen
+function checkForSavedQuiz() {
+    const savedState = loadQuizState();
+    if (savedState) {
+        // Add resume button to quiz options
+        const quizContainer = document.getElementById('quiz-container');
+        if (quizContainer) {
+            const existingResume = document.getElementById('resumeQuizButton');
+            if (!existingResume) {
+                const resumeDiv = document.createElement('div');
+                resumeDiv.id = 'resumeQuizButton';
+                resumeDiv.className = 'resume-quiz-container mb-4';
+                resumeDiv.innerHTML = `
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-history"></i> You have a quiz in progress!</h5>
+                        <p>Question ${savedState.currentQuestionIndex + 1} of ${savedState.totalQuestions} | Score: ${savedState.quizScore}</p>
+                        ${savedState.lectureCoverage.length > 0 ? `
+                        <p class="mb-2"><strong>Chapters covered:</strong> ${savedState.lectureCoverage.map(id => getLectureNameById(id)).join(', ')}</p>
+                        ` : ''}
+                        <button class="btn btn-success" onclick="restoreQuiz()">
+                            <i class="fas fa-play"></i> Resume Where You Left Off
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm ms-2" onclick="discardSavedQuiz()">
+                            Discard
+                        </button>
+                    </div>
+                `;
+                quizContainer.insertBefore(resumeDiv, quizContainer.firstChild);
+            }
+        }
+    }
+}
+
+// Restore saved quiz
+function restoreQuiz() {
+    const savedState = loadQuizState();
+    if (!savedState) return;
+    
+    // Restore quiz state
+    currentQuiz = savedState.currentQuiz;
+    currentQuestionIndex = savedState.currentQuestionIndex;
+    quizScore = savedState.quizScore;
+    userAnswers = savedState.userAnswers || [];
+    quizStartTime = savedState.quizStartTime ? new Date(savedState.quizStartTime) : new Date();
+    
+    quizState.quizType = savedState.quizType;
+    quizState.quizId = savedState.quizId;
+    quizState.lectureCoverage = savedState.lectureCoverage || [];
+    quizState.isActive = true;
+    
+    // Show quiz section
+    showSection('quiz');
+    showQuizQuestion();
+    startQuizTimer();
+    startAutoSave();
+    
+    // Remove resume button
+    const resumeButton = document.getElementById('resumeQuizButton');
+    if (resumeButton) {
+        resumeButton.remove();
+    }
+}
+
+// Discard saved quiz
+function discardSavedQuiz() {
+    if (confirm('Are you sure you want to discard your saved quiz progress?')) {
+        clearQuizState();
+        const resumeButton = document.getElementById('resumeQuizButton');
+        if (resumeButton) {
+            resumeButton.remove();
+        }
+    }
 }
 
 // Reset all user progress
