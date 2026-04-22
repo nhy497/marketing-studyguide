@@ -2317,7 +2317,7 @@ function loadQuizOptions() {
                                 <input class="form-check-input" type="checkbox" id="professorBankCheck" style="width: 24px; height: 24px; cursor: pointer;">
                                 <label class="form-check-label ms-2" for="professorBankCheck" style="cursor: pointer;">
                                     <strong>Professor's Bank</strong><br>
-                                    <small class="text-muted">49 official exam questions</small>
+                                    <small class="text-muted">58 official exam questions</small>
                                 </label>
                             </div>
                         </div>
