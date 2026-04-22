@@ -341,4 +341,25 @@ Q49: The tendency to pay attention to messages consistent with one's attitudes a
 - timulus discrimination.
 - selective exposure.
 
-Total: 49 questions
+Q50: The ________ stage of the product life cycle is characterized by rapid increases in sales.
+- introduction
+- growth
+- maturity
+- decline
+- harvest
+
+Q51: The Kansas state legislature recently banned the use of tanning beds by anyone under the age of 18. This restriction would be an example of which environmental force?
+- social
+- economic
+- technological
+- competitive
+- regulatory
+
+Q52: Channel conflict that arises when one member bypasses another member and sells or buys products directly is referred to as
+- channel circumvention.
+- lateral conflict.
+- horizontal conflict.
+- dual distribution.
+- disintermediation.
+
+Total: 52 questions

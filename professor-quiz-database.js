@@ -349,6 +349,27 @@ const professorQuizQuestions = [
         options: ["selective comprehension.", "selective perception.", "selective retention.", "timulus discrimination.", "selective exposure."],
         correct: 4,
         explanation: "Correct answer: E. Selective exposure. Consumers tend to seek information that supports their existing views."
+    },
+    {
+        id: 50,
+        question: "The ________ stage of the product life cycle is characterized by rapid increases in sales.",
+        options: ["introduction", "growth", "maturity", "decline", "harvest"],
+        correct: 1,
+        explanation: "Correct answer: B. Growth. The growth stage is characterized by rapid sales increases as the product gains acceptance."
+    },
+    {
+        id: 51,
+        question: "The Kansas state legislature recently banned the use of tanning beds by anyone under the age of 18. This restriction would be an example of which environmental force?",
+        options: ["social", "economic", "technological", "competitive", "regulatory"],
+        correct: 4,
+        explanation: "Correct answer: E. Regulatory. Government laws and regulations are part of the regulatory environmental force."
+    },
+    {
+        id: 52,
+        question: "Channel conflict that arises when one member bypasses another member and sells or buys products directly is referred to as",
+        options: ["channel circumvention.", "lateral conflict.", "horizontal conflict.", "dual distribution.", "disintermediation."],
+        correct: 4,
+        explanation: "Correct answer: E. Disintermediation. This occurs when intermediaries are removed from the distribution channel."
     }
 ];
 
