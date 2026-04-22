@@ -349,69 +349,6 @@ const professorQuizQuestions = [
         options: ["selective comprehension.", "selective perception.", "selective retention.", "timulus discrimination.", "selective exposure."],
         correct: 4,
         explanation: "Correct answer: E. Selective exposure. Consumers tend to seek information that supports their existing views."
-    },
-    {
-        id: 50,
-        question: "Flighting schedules would most likely be used for advertising",
-        options: ["automobiles.", "snowboards.", "bottled water.", "toothpaste.", "bathroom cleaner."],
-        correct: 1,
-        explanation: "Correct answer: B. Snowboards. Flighting schedules (intermittent advertising) work best for seasonal products like snowboards."
-    },
-    {
-        id: 51,
-        question: "Which of the following is a consumer market demographic segmentation variable?",
-        options: ["personality", "occupation", "usage rate", "needs", "region"],
-        correct: 1,
-        explanation: "Correct answer: B. Occupation. Demographic variables include age, income, occupation, education, etc. Personality is psychographic, usage rate is behavioral, and region is geographic."
-    },
-    {
-        id: 52,
-        question: "An attitude refers to",
-        options: ["a learned predisposition to respond to an object or class of objects in a consistently favorable or unfavorable way.", "the feelings one has about the preferable modes of conduct that tend to persist over time.", "the process by which an individual selects, organizes, and interprets information to create a meaningful picture of the world.", "a person's consistent behaviors or responses to recurring situations.", "a consumer's subjective perception of how a product or brand performs on different attributes based on personal experience, advertising, and discussions with other people."],
-        correct: 0,
-        explanation: "Correct answer: A. An attitude is a learned predisposition to respond favorably or unfavorably to an object or class of objects."
-    },
-    {
-        id: 53,
-        question: "The use of brand names is especially important for services because of which unique characteristic of services?",
-        options: ["inventory costs", "inseparability", "inconsistency", "invisibility", "intangibility"],
-        correct: 4,
-        explanation: "Correct answer: E. Intangibility. Since services cannot be seen or touched, strong brand names help consumers identify and remember them."
-    },
-    {
-        id: 54,
-        question: "A marketing plan is a _____________ for the marketing actions of an organization for a specific future time period, such as one year or five years.",
-        options: ["resource", "competitive advantage", "road map", "belief", "direction"],
-        correct: 2,
-        explanation: "Correct answer: C. Road map. A marketing plan serves as a road map that guides marketing actions over a specific time period."
-    },
-    {
-        id: 55,
-        question: "Delta Air Lines offers vacation packages that include airfare, car rental, and lodging. Delta Air is using a(n) ________ pricing strategy.",
-        options: ["penetrage", "prestige", "bundle", "odd-even", "standard markup"],
-        correct: 2,
-        explanation: "Correct answer: C. Bundle. Bundle pricing combines multiple products or services at a single price."
-    },
-    {
-        id: 56,
-        question: "Odd-even pricing is based on",
-        options: ["a retailers' ranges of prices.", "the wholesalers' markups.", "a manufacturer's costs.", "competitors' price assumptions.", "customers' perceptions of price."],
-        correct: 4,
-        explanation: "Correct answer: E. Customers' perceptions of price. Odd-even pricing ($9.99 vs $10.00) is based on psychological perceptions."
-    },
-    {
-        id: 57,
-        question: "At the corporate level in an organization,",
-        options: ["the department heads direct overall strategy for the entire organization.", "groups of specialists actually create value for the organization.", "a subsidiary, division, or unit of an organization markets a set of related offerings to a clearly defined group of customers.", "top management directs overall strategy for the entire organization.", "a small number of people from different departments are mutually accountable to accomplish a task or a common set of performance goals."],
-        correct: 3,
-        explanation: "Correct answer: D. Top management directs overall strategy for the entire organization. This is the definition of corporate level strategy."
-    },
-    {
-        id: 58,
-        question: "When developing the Integrated Marketing Communications Program, which of the following are two major factors in consideration of product characteristics?",
-        options: ["Ancillary services and product placement", "Complexity and risk", "Ancillary services and product line", "Product placement and technology", "Price and risk"],
-        correct: 1,
-        explanation: "Correct answer: B. Complexity and risk. These are two key product characteristics that influence IMC program development."
     }
 ];
 
