@@ -391,6 +391,13 @@ const professorQuizQuestions = [
         options: ["problem recognition", "cognitive dissonance", "information search", "alternative evaluation", "postpurchase behavior"],
         correct: 0,
         explanation: "Correct answer: A. Problem recognition. This stage occurs when consumers perceive a gap between their desired state and actual state."
+    },
+    {
+        id: 56,
+        question: "The form of competition in which there are many sellers and they each have a similar product without substitutable products is referred to as",
+        options: ["pure competition.", "singular competition.", "an oligopoly.", "monopolistic competition.", "a monopoly."],
+        correct: 0,
+        explanation: "Correct answer: A. Pure competition. Many sellers with similar, non-substitutable products characterize pure competition."
     }
 ];
 

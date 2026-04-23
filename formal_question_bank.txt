@@ -383,4 +383,11 @@ Q55: During the consumer purchase decision process, an individual at the _______
 - alternative evaluation
 - postpurchase behavior
 
-Total: 55 questions
+Q56: The form of competition in which there are many sellers and they each have a similar product without substitutable products is referred to as
+- pure competition.
+- singular competition.
+- an oligopoly.
+- monopolistic competition.
+- a monopoly.
+
+Total: 56 questions
