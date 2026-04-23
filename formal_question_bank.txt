@@ -362,4 +362,25 @@ Q52: Channel conflict that arises when one member bypasses another member and se
 - dual distribution.
 - disintermediation.
 
-Total: 52 questions
+Q53: Many large consulting firms are beginning to sponsor "women-only" networking events. The purpose of these events is to offer an opportunity for women in management to network with other businesswomen, either as clients, mentors, or protégés. This is an example of which environmental force?
+- economic
+- social
+- competitive
+- regulatory
+- technological
+
+Q54: Solarcom is a 30-year-old information technology company that owns several subsidiaries. One of its subsidiaries is Atlantix Global Systems, which is one of the leading wholesalers for refurbished computer equipment. It has a large share of an industry that is growing worldwide. According to the BCG business portfolio analysis framework, Atlantix Global would most likely be classified as a
+- question mark.
+- dog.
+- goat.
+- star.
+- cash cow.
+
+Q55: During the consumer purchase decision process, an individual at the ________ stage will perceive differences between his or her ideal and actual situations big enough to trigger a decision.
+- problem recognition
+- cognitive dissonance
+- information search
+- alternative evaluation
+- postpurchase behavior
+
+Total: 55 questions

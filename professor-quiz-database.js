@@ -370,6 +370,27 @@ const professorQuizQuestions = [
         options: ["channel circumvention.", "lateral conflict.", "horizontal conflict.", "dual distribution.", "disintermediation."],
         correct: 4,
         explanation: "Correct answer: E. Disintermediation. This occurs when intermediaries are removed from the distribution channel."
+    },
+    {
+        id: 53,
+        question: "Many large consulting firms are beginning to sponsor 'women-only' networking events. The purpose of these events is to offer an opportunity for women in management to network with other businesswomen, either as clients, mentors, or protégés. This is an example of which environmental force?",
+        options: ["economic", "social", "competitive", "regulatory", "technological"],
+        correct: 1,
+        explanation: "Correct answer: B. Social. Changes in societal values and demographics are part of the social environmental force."
+    },
+    {
+        id: 54,
+        question: "Solarcom is a 30-year-old information technology company that owns several subsidiaries. One of its subsidiaries is Atlantix Global Systems, which is one of the leading wholesalers for refurbished computer equipment. It has a large share of an industry that is growing worldwide. According to the BCG business portfolio analysis framework, Atlantix Global would most likely be classified as a",
+        options: ["question mark.", "dog.", "goat.", "star.", "cash cow."],
+        correct: 3,
+        explanation: "Correct answer: D. Star. Stars have high market share in high-growth industries. Atlantix has a large share in a growing industry."
+    },
+    {
+        id: 55,
+        question: "During the consumer purchase decision process, an individual at the ________ stage will perceive differences between his or her ideal and actual situations big enough to trigger a decision.",
+        options: ["problem recognition", "cognitive dissonance", "information search", "alternative evaluation", "postpurchase behavior"],
+        correct: 0,
+        explanation: "Correct answer: A. Problem recognition. This stage occurs when consumers perceive a gap between their desired state and actual state."
     }
 ];
 
