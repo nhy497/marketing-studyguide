@@ -390,4 +390,11 @@ Q56: The form of competition in which there are many sellers and they each have 
 - monopolistic competition.
 - a monopoly.
 
-Total: 56 questions
+Q57: Which of the following is not a criterion that would support forming market segments?
+- There are significant similarities among buyers in the market segment.
+- There is a potential marketing action to reach the segment.
+- The cost to reach the segment exceeds the expected returns.
+- The result of segmenting will cause an increase in market share or profit.
+- The ability to assign buyers to a segment is cost-effective and simple.
+
+Total: 57 questions

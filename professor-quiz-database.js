@@ -398,6 +398,13 @@ const professorQuizQuestions = [
         options: ["pure competition.", "singular competition.", "an oligopoly.", "monopolistic competition.", "a monopoly."],
         correct: 0,
         explanation: "Correct answer: A. Pure competition. Many sellers with similar, non-substitutable products characterize pure competition."
+    },
+    {
+        id: 57,
+        question: "Which of the following is not a criterion that would support forming market segments?",
+        options: ["There are significant similarities among buyers in the market segment.", "There is a potential marketing action to reach the segment.", "The cost to reach the segment exceeds the expected returns.", "The result of segmenting will cause an increase in market share or profit.", "The ability to assign buyers to a segment is cost-effective and simple."],
+        correct: 2,
+        explanation: "Correct answer: C. The cost to reach the segment exceeds the expected returns. This is NOT a valid criterion - segments should be profitable to reach."
     }
 ];
 
