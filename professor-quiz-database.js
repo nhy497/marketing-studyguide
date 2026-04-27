@@ -412,6 +412,13 @@ const professorQuizQuestions = [
         options: ["creating a new use situation", "finding new customers", "changing a product's appearance", "targeting new market segments", "increasing a product's use among existing customers"],
         correct: 2,
         explanation: "Correct answer: C. Changing a product's appearance is a product modification strategy, not a market modification strategy. Market modification focuses on finding new customers, new uses, or increasing usage."
+    },
+    {
+        id: 59,
+        question: "\"I will only pay HK$2 for every 10,000 times the ad uploads to the social media platform\" is ______________ .",
+        options: ["Cost per action", "Cost per click", "Engagement rate", "Click-through rate", "Cost per thousand"],
+        correct: 4,
+        explanation: "Correct answer: E. Cost per thousand (CPM). This pricing model charges per 1,000 impressions/views of the advertisement."
     }
 ];
 

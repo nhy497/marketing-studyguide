@@ -2317,7 +2317,7 @@ function loadQuizOptions() {
                                 <input class="form-check-input" type="checkbox" id="professorBankCheck" style="width: 24px; height: 24px; cursor: pointer;">
                                 <label class="form-check-label ms-2" for="professorBankCheck" style="cursor: pointer;">
                                     <strong>Professor's Bank</strong><br>
-                                    <small class="text-muted">58 official exam questions</small>
+                                    <small class="text-muted">59 official exam questions</small>
                                 </label>
                             </div>
                         </div>
@@ -2349,7 +2349,7 @@ function loadQuizOptions() {
                             <strong><i class="fas fa-chalkboard-teacher"></i> Professor's Official Question Bank</strong>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">58 questions directly from professor's formal exam question bank. Actual exam-style questions.</p>
+                            <p class="card-text">59 questions directly from professor's formal exam question bank. Actual exam-style questions.</p>
                             <button class="btn btn-warning w-100" onclick="quickStartProfessorQuiz()">Quick Start (10 random)</button>
                         </div>
                     </div>

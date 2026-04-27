@@ -404,4 +404,11 @@ Q58: All of the following are market modification strategies except which?
 - targeting new market segments
 - increasing a product's use among existing customers
 
-Total: 58 questions
+Q59: "I will only pay HK$2 for every 10,000 times the ad uploads to the social media platform" is ______________ .
+- Cost per action
+- Cost per click
+- Engagement rate
+- Click-through rate
+- Cost per thousand
+
+Total: 59 questions
