@@ -8,36 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <!-- Visitor Counter - No Registration Required -->
-    <script>
-        // Free visitor counter using CountAPI (no signup needed) + localStorage backup
-        document.addEventListener('DOMContentLoaded', function() {
-            const counterElement = document.getElementById('visitor-count');
-            
-            // Try CountAPI first
-            const namespace = 'marketing-study-site';
-            const key = 'visits';
-            const url = `https://api.countapi.xyz/hit/${namespace}/${key}`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (counterElement) {
-                        counterElement.textContent = data.value.toLocaleString();
-                    }
-                    // Save to localStorage for backup
-                    localStorage.setItem('totalVisits', data.value);
-                })
-                .catch(() => {
-                    // Fallback to localStorage counter
-                    let localVisits = parseInt(localStorage.getItem('localVisits') || '0') + 1;
-                    localStorage.setItem('localVisits', localVisits);
-                    if (counterElement) {
-                        counterElement.textContent = localVisits.toLocaleString() + ' (local)';
-                    }
-                });
-        });
-    </script>
+    <!-- Visitor Counter - GoatCounter (Free, Cross-Device, Privacy-Friendly) -->
+    <script data-goatcounter="https://peter-marketing-study.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
     <!-- Quiz Databases -->
     <script src="quiz-database.js"></script>
     <script src="professor-quiz-database.js"></script>
@@ -82,7 +55,7 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center text-light">
-                    <small><i class="fas fa-eye me-1"></i> Visits: <span id="visitor-count">...</span></small>
+                    <small><a href="https://peter-marketing-study.goatcounter.com" target="_blank" class="text-light text-decoration-none"><i class="fas fa-chart-bar me-1"></i> View Stats</a></small>
                 </div>
             </div>
         </div>
