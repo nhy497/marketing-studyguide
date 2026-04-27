@@ -397,4 +397,11 @@ Q57: Which of the following is not a criterion that would support forming market
 - The result of segmenting will cause an increase in market share or profit.
 - The ability to assign buyers to a segment is cost-effective and simple.
 
-Total: 57 questions
+Q58: All of the following are market modification strategies except which?
+- creating a new use situation
+- finding new customers
+- changing a product's appearance
+- targeting new market segments
+- increasing a product's use among existing customers
+
+Total: 58 questions

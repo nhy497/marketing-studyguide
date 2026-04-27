@@ -405,6 +405,13 @@ const professorQuizQuestions = [
         options: ["There are significant similarities among buyers in the market segment.", "There is a potential marketing action to reach the segment.", "The cost to reach the segment exceeds the expected returns.", "The result of segmenting will cause an increase in market share or profit.", "The ability to assign buyers to a segment is cost-effective and simple."],
         correct: 2,
         explanation: "Correct answer: C. The cost to reach the segment exceeds the expected returns. This is NOT a valid criterion - segments should be profitable to reach."
+    },
+    {
+        id: 58,
+        question: "All of the following are market modification strategies except which?",
+        options: ["creating a new use situation", "finding new customers", "changing a product's appearance", "targeting new market segments", "increasing a product's use among existing customers"],
+        correct: 2,
+        explanation: "Correct answer: C. Changing a product's appearance is a product modification strategy, not a market modification strategy. Market modification focuses on finding new customers, new uses, or increasing usage."
     }
 ];
 
