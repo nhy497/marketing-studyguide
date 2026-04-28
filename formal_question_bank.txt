@@ -237,8 +237,8 @@ Q34: For high-involvement purchases, consumers typically do all of the following
 - consider many brands
 
 Q35: Which of the following is a competition-oriented approach to pricing?
-- target pricing
 - customary pricing
+- target pricing
 - standard markup pricing
 - target return-on-sales pricing
 - skimming pricing

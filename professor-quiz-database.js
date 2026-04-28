@@ -248,9 +248,9 @@ const professorQuizQuestions = [
     {
         id: 35,
         question: "Which of the following is a competition-oriented approach to pricing?",
-        options: ["target pricing", "customary pricing", "standard markup pricing", "target return-on-sales pricing", "skimming pricing"],
+        options: ["customary pricing", "target pricing", "standard markup pricing", "target return-on-sales pricing", "skimming pricing"],
         correct: 0,
-        explanation: "Correct answer: A. Target pricing is a competition-oriented approach that considers what competitors charge."
+        explanation: "Correct answer: A. Customary pricing is a competition-oriented approach based on tradition and market norms (e.g., newspapers, candy bars at fixed prices). Target pricing is demand-oriented, not competition-oriented."
     },
     {
         id: 36,
