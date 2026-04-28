@@ -1938,7 +1938,6 @@ const caseStudies = {
 5. **Storytelling**: Uses the founder's story to enhance brand authenticity and emotional appeal
 
 
-
 This model successfully combines commercial objectives with social responsibility, creating a win-win situation for both business and society.`,
 
                 keywords: ["cause-related marketing", "social responsibility", "emotional connection", "brand differentiation", "sustainable impact"],
@@ -1951,49 +1950,34 @@ This model successfully combines commercial objectives with social responsibilit
                 }
             },
             1: {
-                answer: `**📌 QUICK FRAMEWORK: "A-C-T-S-R" - 5 Loyalty Drivers**
+                answer: `The impact of Toms Shoes's business model on brand loyalty includes:
 
 
-**1️⃣ A - Alignment**
-→ Values match = loyal match
+
+1. **Value Alignment**: Consumers who value social responsibility feel aligned with the brand
+
+2. **Emotional Bond**: The charitable aspect creates emotional attachment beyond product functionality
+
+3. **Brand Advocacy**: Satisfied customers become brand ambassadors, sharing the social mission
+
+4. **Repeat Purchases**: Consumers may purchase more to increase social impact
+
+5. **Community Building**: Creates a community of socially conscious consumers
+
+6. **Trust Building**: Transparency in social impact builds consumer trust
+
+7. **Differentiated Experience**: Purchase experience is more meaningful than traditional retail
 
 
-**2️⃣ C - Community**
-→ Belonging to "good people" tribe
 
+However, challenges include:
 
-**3️⃣ T - Trust**
-→ See the impact = believe the brand
+- Maintaining authenticity as the brand scales
 
+- Competition from similar social enterprise models
 
-**4️⃣ S - Story Sharing**
-→ Customers become ambassadors
+- Balancing social mission with business growth`,
 
-
-**5️⃣ R - Repeat for Results**
-→ Buy more = Help more
-
-
----
-
-**🧠 MEMORY ANCHOR:**
-"ACTS of loyalty build TRUST"
-
-
-**⚠️ CHALLENGES (Don't forget!):**
-
-• **Scale Risk**
-  → Bigger = harder to stay authentic
-
-• **Copycats**
-  → Others copy the model
-
-• **Balance**
-  → Profit vs Purpose tension
-
-
-**💡 KEY INSIGHT:**
-TOMS loyalty is EMOTIONAL, not just transactional`,
 
 
                 keywords: ["brand loyalty", "emotional connection", "value alignment", "brand advocacy", "repeat purchases"],
@@ -2053,6 +2037,8 @@ TOMS loyalty is EMOTIONAL, not just transactional`,
 - Dependence on social mission narrative
 
 - Vulnerability to "cause fatigue" among consumers`,
+
+
 
                 keywords: ["market segmentation", "positioning strategy", "target market", "social enterprise", "competitive advantage"],
                 maxScore: 20,
