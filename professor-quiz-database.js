@@ -102,8 +102,8 @@ const professorQuizQuestions = [
         id: 14,
         question: "What is the profit resulting from the sale of 2,000 toys priced at $25 each in a toy store with $30,000 fixed costs and $12,000 variable costs? Choose the correct profit amount below:",
         options: ["$5,000", "$15,000", "$3,000", "$8,000", "$6,000"],
-        correct: 0,
-        explanation: "Correct answer: A. $5,000. Revenue = 2,000 × $25 = $50,000. Costs = $30,000 + $12,000 = $42,000. Profit = $50,000 - $42,000 = $8,000."
+        correct: 3,
+        explanation: "Correct answer: D. $8,000. Revenue = 2,000 × $25 = $50,000. Costs = $30,000 + $12,000 = $42,000. Profit = $50,000 - $42,000 = $8,000."
     },
     {
         id: 15,
