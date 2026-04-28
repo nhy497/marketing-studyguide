@@ -2385,46 +2385,37 @@ function loadQuizOptions() {
 
 // Start quiz
 function startQuiz() {
-    // Load quiz questions from quiz-database.js with better error handling
+    // Load quiz questions from professor and practice question banks
     try {
-        if (typeof generateFullQuiz === 'function') {
-            currentQuiz = generateFullQuiz(); // Use the proper 80-question generator
-        } else if (typeof extendedQuizQuestions !== 'undefined' && Array.isArray(extendedQuizQuestions)) {
-            // Fallback: create 80-question quiz manually
-            currentQuiz = [];
-            const questionsPerLecture = 10;
-            
-            for (let lectureId = 2; lectureId <= 9; lectureId++) {
-                // Skip Lecture 8 (Place/Distribution) - excluded from exam
-                if (lectureId === 8) continue;
-                
-                const lectureQuestions = extendedQuizQuestions.filter(q => {
-                    if (!q || !q.question) return false;
-                    const questionText = q.question.toLowerCase();
-                    const lectureTopics = getLectureTopics(lectureId);
-                    return lectureTopics.some(topic => questionText.includes(topic));
-                });
-                
-                // Add questions for this lecture
-                const questionsToAdd = lectureQuestions.slice(0, questionsPerLecture);
-                currentQuiz.push(...questionsToAdd);
-            }
-            
-            // If we still don't have 80 questions, add more from the general pool
-            if (currentQuiz.length < 80) {
-                const remainingQuestions = extendedQuizQuestions.filter(q => 
-                    q && !currentQuiz.includes(q) && q.question && q.options
-                );
-                const needed = 80 - currentQuiz.length;
-                currentQuiz.push(...remainingQuestions.slice(0, needed));
-            }
-            
-            // Shuffle the questions
-            currentQuiz.sort(() => Math.random() - 0.5);
-            currentQuiz = currentQuiz.slice(0, 80); // Ensure exactly 80 questions
-        } else {
-            throw new Error('Quiz database not available');
+        let professorQuestions = [];
+        let practiceQuestions = [];
+        
+        // Get professor questions (59 questions)
+        if (typeof professorQuizQuestions !== 'undefined' && Array.isArray(professorQuizQuestions) && professorQuizQuestions.length > 0) {
+            professorQuestions = [...professorQuizQuestions];
         }
+        
+        // Get practice questions (70 questions)
+        if (typeof practiceQuizQuestions !== 'undefined' && Array.isArray(practiceQuizQuestions) && practiceQuizQuestions.length > 0) {
+            practiceQuestions = [...practiceQuizQuestions];
+        }
+        
+        // Check if we have questions from at least one bank
+        if (professorQuestions.length === 0 && practiceQuestions.length === 0) {
+            throw new Error('No question banks available');
+        }
+        
+        // Combine both question banks
+        let combinedQuestions = [...professorQuestions, ...practiceQuestions];
+        
+        // Shuffle all questions
+        combinedQuestions.sort(() => Math.random() - 0.5);
+        
+        // Select 80 random questions (or all available if less than 80)
+        currentQuiz = combinedQuestions.slice(0, Math.min(80, combinedQuestions.length));
+        
+        console.log(`Full Quiz: ${currentQuiz.length} questions selected from Professor (${professorQuestions.length}) + Practice (${practiceQuestions.length})`);
+        
     } catch (error) {
         console.error('Error loading quiz questions:', error);
         // Fallback questions if quiz database is not available
@@ -2605,6 +2596,93 @@ function startMixedQuiz() {
     // Initialize quiz state
     quizState.isActive = true;
     quizState.quizType = 'mixed';
+    quizState.quizId = generateQuizId();
+    quizState.lectureCoverage = [];
+    
+    // Clear any previous saved quiz state
+    clearQuizState();
+    
+    showQuizQuestion();
+    startQuizTimer();
+    startAutoSave();
+    
+    // Show translation controls
+    const translationControls = document.getElementById('quiz-translation-controls');
+    if (translationControls) {
+        translationControls.style.display = 'block';
+    }
+}
+
+// Start Mixed Quiz - Automatically selects from both question banks
+function startMixedQuizAuto() {
+    // Load questions from both question banks
+    try {
+        let professorQuestions = [];
+        let practiceQuestions = [];
+        
+        // Get professor questions
+        if (typeof professorQuizQuestions !== 'undefined' && Array.isArray(professorQuizQuestions) && professorQuizQuestions.length > 0) {
+            professorQuestions = [...professorQuizQuestions];
+        }
+        
+        // Get practice questions
+        if (typeof practiceQuizQuestions !== 'undefined' && Array.isArray(practiceQuizQuestions) && practiceQuizQuestions.length > 0) {
+            practiceQuestions = [...practiceQuizQuestions];
+        }
+        
+        // Check if we have questions from at least one bank
+        if (professorQuestions.length === 0 && practiceQuestions.length === 0) {
+            throw new Error('No question banks available');
+        }
+        
+        // Shuffle both arrays
+        const shuffledProfessor = professorQuestions.sort(() => Math.random() - 0.5);
+        const shuffledPractice = practiceQuestions.sort(() => Math.random() - 0.5);
+        
+        // Select 5 from each (or all available if less than 5)
+        const selectedProfessor = shuffledProfessor.slice(0, Math.min(5, shuffledProfessor.length));
+        const selectedPractice = shuffledPractice.slice(0, Math.min(5, shuffledPractice.length));
+        
+        // Combine the questions
+        let combinedQuestions = [...selectedProfessor, ...selectedPractice];
+        
+        // If we have less than 10 questions total, try to fill from the other bank
+        if (combinedQuestions.length < 10) {
+            if (selectedProfessor.length < 5 && shuffledPractice.length > selectedPractice.length) {
+                // Need more questions, get more from practice bank
+                const additionalNeeded = 10 - combinedQuestions.length;
+                const additional = shuffledPractice.slice(selectedPractice.length, selectedPractice.length + additionalNeeded);
+                combinedQuestions = [...combinedQuestions, ...additional];
+            } else if (selectedPractice.length < 5 && shuffledProfessor.length > selectedProfessor.length) {
+                // Need more questions, get more from professor bank
+                const additionalNeeded = 10 - combinedQuestions.length;
+                const additional = shuffledProfessor.slice(selectedProfessor.length, selectedProfessor.length + additionalNeeded);
+                combinedQuestions = [...combinedQuestions, ...additional];
+            }
+        }
+        
+        // Final shuffle to mix the questions
+        currentQuiz = combinedQuestions.sort(() => Math.random() - 0.5);
+        
+        // Store the mix info for display
+        const professorCount = selectedProfessor.length;
+        const practiceCount = selectedPractice.length;
+        console.log(`Mixed Quiz: ${professorCount} from Professor + ${practiceCount} from Practice = ${currentQuiz.length} total questions`);
+        
+    } catch (error) {
+        console.error('Error loading mixed quiz questions:', error);
+        alert('Error loading question banks. Please try again.');
+        return;
+    }
+    
+    currentQuestionIndex = 0;
+    quizScore = 0;
+    userAnswers = [];
+    quizStartTime = new Date();
+    
+    // Initialize quiz state
+    quizState.isActive = true;
+    quizState.quizType = 'mixed-auto';
     quizState.quizId = generateQuizId();
     quizState.lectureCoverage = [];
     
