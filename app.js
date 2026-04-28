@@ -2028,7 +2028,151 @@ However, challenges include:
             "Analyze Apple's positioning strategy in the high-end market.",
             "Discuss how Apple's ecosystem strategy contributes to its competitive advantage.",
             "Evaluate Apple's pricing strategy and its impact on brand perception."
-        ]
+        ],
+        suggestedAnswers: {
+            0: {
+                answer: `Apple's positioning strategy in the high-end market can be analyzed through the following key elements:
+
+**1. Differentiation-Based Positioning:**
+- Apple positions itself as a premium brand through innovative design and superior user experience
+- Focus on simplicity, elegance, and minimalist aesthetics differentiates from competitors
+- Emphasis on cutting-edge technology and seamless integration between hardware and software
+
+**2. Brand Image and Identity:**
+- Cultivates an image of innovation, creativity, and exclusivity
+- Associates the brand with lifestyle and status symbols
+- Uses mystery marketing and highly anticipated product launches to build excitement
+
+**3. Target Market Selection:**
+- Focuses on affluent consumers willing to pay premium prices
+- Targets creative professionals, tech enthusiasts, and status-conscious consumers
+- Appeals to customers who value quality and user experience over price
+
+**4. Value Proposition:**
+- Premium quality justifies higher prices
+- Superior customer service and in-store experiences (Apple Stores)
+- Strong focus on privacy and security as competitive differentiators
+
+**5. Competitive Advantages:**
+- First-mover advantage in many product categories (iPod, iPhone, iPad)
+- Strong brand loyalty and customer retention
+- Control over entire value chain from design to retail
+
+**Potential Limitations:**
+- High prices limit market accessibility
+- Risk of being perceived as elitist or exclusive
+- Intense competition from lower-priced alternatives`,
+                keywords: ["positioning strategy", "differentiation", "premium brand", "user experience", "brand image", "target market", "value proposition"],
+                maxScore: 20,
+                scoringCriteria: {
+                    "Positioning analysis": 5,
+                    "Brand strategy": 5,
+                    "Target market identification": 5,
+                    "Critical evaluation": 5
+                }
+            },
+            1: {
+                answer: `Apple's ecosystem strategy creates significant competitive advantages through:
+
+**1. Interconnected Product Ecosystem:**
+- Seamless integration across iPhone, iPad, Mac, Apple Watch, and AirPods
+- iCloud enables synchronized data across all devices
+- Handoff features allow users to start tasks on one device and continue on another
+
+**2. Software and Services Integration:**
+- Proprietary operating systems (iOS, macOS, watchOS) optimized for Apple hardware
+- App Store creates a controlled, curated marketplace
+- Services like Apple Music, iCloud+, Apple TV+, and Apple Arcade increase customer stickiness
+
+**3. Switching Costs and Lock-in Effects:**
+- Users invested in the ecosystem face high switching costs when considering alternatives
+- Purchased apps, content, and accessories are ecosystem-specific
+- Learning curve for new devices is minimized within the ecosystem
+
+**4. Network Effects:**
+- iMessage and FaceTime create social network effects among Apple users
+- AirDrop and other exclusive features encourage others to adopt Apple products
+- Family sharing increases household penetration
+
+**5. Revenue Diversification:**
+- Services revenue provides recurring, high-margin income
+- Reduces dependence on hardware sales alone
+- Creates multiple touchpoints with customers
+
+**6. Customer Retention and Loyalty:**
+- Ecosystem satisfaction drives repeat purchases within the brand
+- High customer lifetime value through multiple product ownership
+- Word-of-mouth promotion among satisfied ecosystem users
+
+**Challenges:**
+- Closed ecosystem faces criticism for limiting consumer choice
+- Regulatory scrutiny regarding App Store practices
+- Need to continuously innovate to maintain ecosystem appeal`,
+                keywords: ["ecosystem strategy", "competitive advantage", "integration", "switching costs", "network effects", "customer retention", "services revenue"],
+                maxScore: 20,
+                scoringCriteria: {
+                    "Ecosystem analysis": 6,
+                    "Competitive advantages": 6,
+                    "Business impact": 5,
+                    "Critical evaluation": 3
+                }
+            },
+            2: {
+                answer: `Apple's pricing strategy and its impact on brand perception:
+
+**1. Premium Pricing Strategy:**
+- Apple consistently prices products at the high end of the market
+- Prices reflect positioning as a luxury/aspirational brand
+- Avoids competing on price, focusing instead on value differentiation
+
+**2. Price Skimming Approach:**
+- New products launch at high prices targeting early adopters
+- Prices gradually decrease or older models become "entry-level" options
+- Maximizes revenue from each market segment over time
+
+**3. Psychological Pricing Effects:**
+- High prices reinforce perception of superior quality and exclusivity
+- Creates scarcity value and desirability
+- Positions Apple as a status symbol and lifestyle choice
+
+**4. Value-Based Pricing Justification:**
+- Pricing reflects investment in R&D, design, and customer experience
+- Includes premium customer service and retail experience costs
+- Supports long-term software updates and security maintenance
+
+**5. Product Line Pricing:**
+- Good-Better-Best options (e.g., iPhone SE, standard, Pro models)
+- Captures different price-sensitive segments while maintaining premium image
+- Older models at reduced prices serve as entry points to the ecosystem
+
+**6. Impact on Brand Perception:**
+- **Positive Effects:**
+  - Reinforces image of quality and innovation
+  - Attracts affluent, loyal customer base
+  - Creates aspirational desire among non-customers
+  - Supports high-margin business model
+
+- **Potential Negative Effects:**
+  - Excludes price-sensitive consumers, limiting market share
+  - May be perceived as overpriced compared to competitors
+  - Vulnerability to economic downturns affecting discretionary spending
+  - Creates barrier to entry for developing market expansion
+
+**7. Strategic Considerations:**
+- Premium pricing requires consistent delivery of superior value
+- Any quality issues have amplified negative impact due to price expectations
+- Maintaining price premium requires continuous innovation
+- Trade-off between market share and profit margins`,
+                keywords: ["pricing strategy", "premium pricing", "brand perception", "price skimming", "value-based pricing", "psychological pricing", "competitive positioning"],
+                maxScore: 20,
+                scoringCriteria: {
+                    "Pricing strategy analysis": 6,
+                    "Brand impact assessment": 6,
+                    "Strategic evaluation": 5,
+                    "Critical perspective": 3
+                }
+            }
+        }
     },
     3: {
         title: "Case Study 3: Netflix's Digital Marketing Transformation",
@@ -2056,7 +2200,162 @@ However, challenges include:
             "Analyze Netflix's digital transformation strategy.",
             "Discuss how data analytics contributes to Netflix's competitive advantage.",
             "Evaluate Netflix's content strategy and its impact on market position."
-        ]
+        ],
+        suggestedAnswers: {
+            0: {
+                answer: `Netflix's digital transformation strategy represents one of the most successful business model pivots in modern history:
+
+**1. Business Model Transformation:**
+- **From Physical to Digital:** Transitioned from DVD-by-mail rental to streaming subscription service
+- **Subscription-Based Revenue:** Shifted from transactional (per-rental) to recurring revenue model
+- **Global Scalability:** Streaming model enabled rapid international expansion without physical infrastructure
+
+**2. Technology Investment Strategy:**
+- **Infrastructure Development:** Invested heavily in content delivery networks (CDN) and streaming technology
+- **Adaptive Streaming:** Implemented technology to optimize video quality based on internet connection
+- **Multi-Device Support:** Developed apps for smartphones, tablets, smart TVs, and gaming consoles
+
+**3. Timing and Market Positioning:**
+- **First-Mover Advantage:** Entered streaming market before major competitors
+- **Technology Readiness:** Capitalized on improving internet speeds and connected device proliferation
+- **Consumer Behavior Shift:** Anticipated and shaped changing viewing habits (cord-cutting trend)
+
+**4. Strategic Phases of Transformation:**
+- **Phase 1:** Introduced streaming as add-on to DVD service (2007)
+- **Phase 2:** Separation of streaming and DVD services (2011)
+- **Phase 3:** Global expansion with localized content (2016+)
+- **Phase 4:** Original content production and IP ownership (2013+)
+
+**5. Key Success Factors:**
+- **Customer-Centric Approach:** Used data to understand and predict viewer preferences
+- **Agile Adaptation:** Willingness to cannibalize own DVD business for streaming future
+- **Investment in Innovation:** Continuous improvement of user experience and technology
+- **Content Acquisition:** Strategic licensing deals before competitors recognized streaming value
+
+**6. Challenges Overcome:**
+- **Technology Limitations:** Buffering and quality issues in early streaming days
+- **Content Costs:** Increasing licensing fees as streaming market matured
+- **Competition:** Entry of major players (Amazon, Disney+, HBO Max)
+- **Infrastructure:** Building global content delivery network
+
+**7. Marketing Implications:**
+- **Brand Repositioning:** From "DVD rental" to "entertainment company"
+- **Customer Acquisition:** Free trial periods and referral programs
+- **Retention Focus:** Personalized experience to reduce churn`,
+                keywords: ["digital transformation", "business model innovation", "streaming technology", "subscription model", "first-mover advantage", "global expansion", "content delivery"],
+                maxScore: 20,
+                scoringCriteria: {
+                    "Transformation analysis": 6,
+                    "Technology strategy": 5,
+                    "Strategic phases": 4,
+                    "Critical evaluation": 5
+                }
+            },
+            1: {
+                answer: `Data analytics is central to Netflix's competitive advantage through multiple strategic applications:
+
+**1. Personalized Recommendation System:**
+- **Algorithm Development:** Proprietary algorithms analyze viewing history, ratings, and behavior
+- **Content Discovery:** 80% of watched content comes from recommendations, reducing decision fatigue
+- **Micro-Segmentation:** Creates thousands of taste clusters for precise content matching
+- **Thumbnail Optimization:** A/B tests different artwork to maximize click-through rates
+
+**2. Content Investment Decisions:**
+- **Data-Driven Production:** Analyzes viewing patterns to greenlight original content (e.g., House of Cards)
+- **Audience Sizing:** Predicts potential viewership before investing in content
+- **Genre Analysis:** Identifies underserved genres and content gaps in the library
+- **ROI Prediction:** Uses data to estimate content value and optimal investment levels
+
+**3. Customer Retention and Churn Prevention:**
+- **Predictive Models:** Identifies subscribers at risk of canceling before they churn
+- **Engagement Monitoring:** Tracks viewing frequency and content consumption patterns
+- **Intervention Strategies:** Proactively suggests content to re-engage inactive users
+- **Pricing Optimization:** Uses data to test and optimize pricing strategies
+
+**4. User Experience Optimization:**
+- **A/B Testing:** Continuously tests UI changes, feature releases, and algorithms
+- **Search Enhancement:** Improves search functionality based on query patterns
+- **Auto-Play Features:** Uses behavioral data to optimize autoplay settings
+- **Quality Adaptation:** Adjusts streaming quality based on network conditions
+
+**5. Content Acquisition Strategy:**
+- **Licensing Decisions:** Analyzes content performance to guide licensing negotiations
+- **Regional Customization:** Uses regional viewing data to acquire local content
+- **Timing Optimization:** Determines optimal release windows for content
+
+**6. Competitive Advantages from Analytics:**
+- **Customer Insights:** Deep understanding of viewer preferences that competitors lack
+- **Reduced Risk:** Data reduces uncertainty in content investment decisions
+- **Efficiency:** Optimizes marketing spend by targeting likely viewers
+- **Innovation:** Ability to identify and create new content categories
+
+**7. Privacy and Ethics Considerations:**
+- **Data Usage:** Must balance personalization with privacy concerns
+- **Filter Bubbles:** Risk of limiting content diversity through over-personalization
+- **Transparency:** Users may be concerned about data collection practices`,
+                keywords: ["data analytics", "competitive advantage", "recommendation system", "personalization", "predictive modeling", "content optimization", "customer retention"],
+                maxScore: 20,
+                scoringCriteria: {
+                    "Analytics application": 6,
+                    "Business impact": 6,
+                    "Competitive advantage": 5,
+                    "Critical evaluation": 3
+                }
+            },
+            2: {
+                answer: `Netflix's content strategy and its impact on market position can be analyzed as follows:
+
+**1. Content Strategy Evolution:**
+- **Phase 1 - Licensing:** Initially focused on licensing popular TV shows and movies
+- **Phase 2 - Original Content:** Transitioned to producing exclusive original content (Netflix Originals)
+- **Phase 3 - Global Content:** Investment in international content for global and local appeal
+- **Phase 4 - Content Diversification:** Expansion into documentaries, reality TV, animation, and interactive content
+
+**2. Original Content Strategy:**
+- **Volume Approach:** Produces more content than competitors to serve diverse tastes
+- **Global Hits:** Creates content with universal appeal (Stranger Things, Squid Game)
+- **Local Content:** Invests in regional content (e.g., Money Heist - Spain, Sacred Games - India)
+- **Creator Freedom:** Attracts top talent with creative freedom and generous budgets
+
+**3. Strategic Benefits of Original Content:**
+- **Exclusivity:** Content available only on Netflix creates subscription necessity
+- **Cost Control:** Avoids rising licensing fees and content removal risks
+- **IP Ownership:** Builds valuable intellectual property asset base
+- **Global Distribution:** Originals can be released simultaneously worldwide
+
+**4. Content Investment Scale:**
+- **Budget Allocation:** Spends billions annually on content production and acquisition
+- **Risk Distribution:** Produces many shows knowing some will fail, but hits will compensate
+- **Genre Diversity:** Covers all major genres to serve different audience segments
+- **Quality Balance:** Mix of prestige content (awards contenders) and comfort viewing
+
+**5. Impact on Market Position:**
+- **Differentiation:** Original content distinguishes Netflix from competitors
+- **Pricing Power:** Exclusive content justifies subscription price and potential increases
+- **Market Leadership:** Content volume and quality maintain subscriber base despite competition
+- **Brand Identity:** Establishes Netflix as a premium entertainment brand
+
+**6. Challenges and Risks:**
+- **Content Costs:** Production costs continue to rise, impacting profitability
+- **Competition:** Rivals (Disney, Amazon, Apple) also investing heavily in originals
+- **Subscriber Expectations:** Must constantly deliver fresh content to retain subscribers
+- **Quality Consistency:** High volume can lead to variable content quality
+
+**7. Future Strategic Considerations:**
+- **Sustainability:** Balancing content investment with profitability goals
+- **Theatrical vs. Streaming:** Decisions about theatrical releases for prestige films
+- **Ad-Supported Tier:** Content strategy implications of lower-priced ad tier
+- **Live Content:** Potential expansion into sports and live programming`,
+                keywords: ["content strategy", "original content", "market position", "exclusive content", "content investment", "global content", "IP ownership"],
+                maxScore: 20,
+                scoringCriteria: {
+                    "Strategy analysis": 6,
+                    "Market impact": 6,
+                    "Strategic benefits": 5,
+                    "Critical evaluation": 3
+                }
+            }
+        }
     }
 };
 
